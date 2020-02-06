@@ -42,7 +42,7 @@ Returns all branches in a specified project and space.
 [POST] /spaces/{spaceName}/projects/{projectName}/branches::
 +
 --
-Adds branch in a specified project and space.
+Adds a specified branch in a specified project and space.
 
 .Request parameters
 [cols="25%,45%,15%,15%", frame="all", options="header"]
