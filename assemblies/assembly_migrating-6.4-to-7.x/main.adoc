@@ -58,6 +58,8 @@ include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-projects-ref.
 
 include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-jobs-ref.adoc[leveloffset=+4]
 
+include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-branches-ref.adoc[leveloffset=+4]
+
 :context: non-exec-server
 include::{enterprise-dir}/migration/migration-verify-proc.adoc[leveloffset=+2]
 
@@ -96,6 +98,8 @@ include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-spaces-ref.ad
 include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-projects-ref.adoc[leveloffset=+4]
 
 include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-jobs-ref.adoc[leveloffset=+4]
+
+include::{shared-dir}/Workbench/RemoteAPI/knowledge-store-rest-api-branches-ref.adoc[leveloffset=+4]
 
 include::{enterprise-dir}/migration/migration-configure-kie-server-proc.adoc[leveloffset=+2]
 
