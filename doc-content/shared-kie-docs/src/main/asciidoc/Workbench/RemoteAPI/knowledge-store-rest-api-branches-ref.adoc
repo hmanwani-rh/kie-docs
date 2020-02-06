@@ -132,6 +132,7 @@ Deletes a specified branch in a specified project and space.
     "userIdentifier": "bc"
 }
 ----
+
 --
 [POST] /spaces/{spaceName}/projects/{projectName}/branches/{branchName}/maven/compile::
 +
