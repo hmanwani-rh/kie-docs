@@ -137,7 +137,7 @@ Deletes a specified branch in a specified project and space.
 [POST] /spaces/{spaceName}/projects/{projectName}/branches/{branchName}/maven/compile::
 +
 --
-Compiles a specified branch in a specified project and space.
+Compiles a specified branch in a specified project and space. If `branchName` is not specified, then request applies to the master branch.
 
 .Request parameters
 [cols="25%,45%,15%,15%", frame="all", options="header"]
@@ -178,7 +178,7 @@ Compiles a specified branch in a specified project and space.
 [POST] /spaces/{spaceName}/projects/{projectName}/branches/{branchName}/maven/install::
 +
 --
-Installs a specified branch in a specified project and space.
+Installs a specified branch in a specified project and space. If `branchName` is not specified, then request applies to the master branch.
 
 .Request parameters
 [cols="25%,45%,15%,15%", frame="all", options="header"]
@@ -218,7 +218,7 @@ Installs a specified branch in a specified project and space.
 [POST] /spaces/{spaceName}/projects/{projectName}/branches/{branchName}/maven/test::
 +
 --
-Tests a specified branch in a specified project and space.
+Tests a specified branch in a specified project and space. If `branchName` is not specified, then request applies to the master branch.
 
 .Request parameters
 [cols="25%,45%,15%,15%", frame="all", options="header"]
@@ -259,7 +259,7 @@ Tests a specified branch in a specified project and space.
 [POST] /spaces/{spaceName}/projects/{projectName}/branches/{branchName}/maven/deploy::
 +
 --
-Deploys a specified branch in a specified project and space.
+Deploys a specified branch in a specified project and space. If `branchName` is not specified, then request applies to the master branch.
 
 .Request parameters
 [cols="25%,45%,15%,15%", frame="all", options="header"]
