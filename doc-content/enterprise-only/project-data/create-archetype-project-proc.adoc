@@ -1,0 +1,21 @@
+[id='create_archetype_project']
+= Creating a project using Archetypes
+
+Archetypes are projects that are installed in maven repositories in which a template structure is set or can be created if required. You can use archetypes to create a project in {CENTRAL}. When a project is created in {CENTRAL} it is added to the Git repository that is connected to your {PRODUCT} installation.
+
+.Prerequisites
+
+* You have created an archetype and listed in the {CENTRAL} *Settings* from the maven repository. For creating archetypes, see https://maven.apache.org/guides/mini/guide-creating-archetypes.html[Guide to Creating Archetypes].
+
+* You have set an archetype as default in your space in the {CENTRAL}.
+
+.Procedure
+. In {CENTRAL}, go to *Menu* -> *Design* -> *Projects*.
+. Click *Add Project*.
+. Type the project name and description in the *Name* and *Description* field respectively.
+. Click *Configure Advanced Options*.
+. Enable *Based on template* checkbox.
+. Select the archetype from drop-down options if required. The default archetype is selected that is already set in the space.
+. Click *Add*.
+
+The *Assets* view of the project opens when you successfully create the project.
