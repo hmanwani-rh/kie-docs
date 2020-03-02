@@ -5,7 +5,7 @@ Archetypes are projects that are installed in maven repositories in which a temp
 
 .Prerequisites
 
-* You have created an archetype and listed in the {CENTRAL} *Settings* from the maven repository. For creating archetypes, see https://maven.apache.org/guides/mini/guide-creating-archetypes.html[Guide to Creating Archetypes].
+* You have created an archetype and listed in the {CENTRAL} *Settings* from the maven repository.
 
 * You have set an archetype as default in your space in the {CENTRAL}.
 
