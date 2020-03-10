@@ -12,6 +12,7 @@ For more information about archetypes management, see {URL_CONFIGURING_CENTRAL}[
 
 .Procedure
 . In {CENTRAL}, go to *Menu* -> *Design* -> *Projects*.
+. Select or create the space into which you want to add a new project from an archetype template.
 . Click *Add Project*.
 . Type the project name and description in the *Name* and *Description* fields.
 . Click *Configure Advanced Options*.
