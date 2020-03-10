@@ -1,43 +1,43 @@
 [id='container-alias-con_{context}']
-= Container alias
+= KIE container aliases
 
-Container alias is a proxy in the KIE server instances that helps in handling different versions of the same container deployment. It is possible to link a single alias to different versions of a container, for instance when the container is upgraded, the linked alias automatically points to the new version of the container. For information about creating an alias, see xref:deployment-unit-create-proc_packaging-deploying[].
+An alias for a KIE container (deployment unit) is a proxy in the {KIE_SERVER} instance that helps in handling different versions of the same container deployment. You can link a single alias to different versions of a container. When a container is upgraded, the linked alias automatically points to the new version of the container. For information about creating a KIE container alias, see xref:deployment-unit-create-proc_packaging-deploying[].
 
-Consider an example, if a client application is changing every time a new version of a container is deployed, then the client application can point to the container alias. Therefore, when a new container version is deployed, the associated alias is updated and all the requests are routed automatically to the new container without changing the client application.
+For example, if a client application is changing every time a new version of a container is deployed, then the client application can point to the container alias. When a new container version is deployed, the associated alias is updated and all the requests are routed automatically to the new container without changing the client application.
 
-Consider there is a project containing a single process containing the following properties:
+Consider an example project that contains a single process and uses the following properties:
 
 * `GroupId`: org.jbpm
 * `ArtifactId`: my-project
 * `Version`: 1.0
 * `containerID`: my-project
 
-When you update, build and deploy the above process to the KIE server, the associated project is updated with the latest version containing the following properties:
+When you update, build, and deploy the above project, the associated project is updated in the {KIE_SERVER} with the latest version and contains the following properties:
 
 * `GroupId`: org.jbpm
 * `ArtifactId`: my-project
 * `Version`: 2.0
 
-Now if you want to deploy the latest version of the project, you need to update the `containerID` as _my-project2_ because _my-project_ container points to the old version.
+If you want to deploy the latest version of the project, you need to update the `containerID` as `my-project2` because the `my-project` container points to the old version.
 
 [NOTE]
 ====
-Every version contains a different `containerID`, the associated client applications need to be aware of all the versions every time when interacting with the projects.
+Every project version contains a different `containerID` name. The associated client applications need to be aware of all versions of the projects they interact with.
 ====
 
-Container alias makes it easy to manage the containers. You can set the container aliases explicitly when creating a container, or implicitly based on the associated `ArtifactId`. You can add a single alias to multiple containers if required, however, if not specified, then `ArtifactId` of a project is set as container alias by default.
+Container aliases also help you manage KIE containers. You can set the container aliases explicitly when creating a container, or implicitly based on the associated `ArtifactId` name. You can add a single alias to multiple containers if required. If you do not specify a container alias, then the `ArtifactId` of a project is set as the container alias by default.
 
-When you set an alias for multiple containers that contain different `GroupId` and `ArtifactId`, then you can use the same alias every time to interact with the KIE server. However, usage of container aliases depends on the operation that you want to perform.
+When you set an alias for multiple containers that contain different `GroupId` and `ArtifactId` names, then you can use the same alias every time to interact with the {KIE_SERVER}.
 
-Container alias is commonly used for the following use cases:
+You typically use container aliases in the following use cases:
 
-* *Starting a new process instance* on the client application with the latest version of the process.
-* *Interacting with an existing process* of a specific version.
-* *Interacting with an existing task* in a process.
-* *Interacting with process definition* image and forms.
+* *Starting a new process instance* on the client application with the latest version of the process
+* *Interacting with an existing process* of a specific version
+* *Interacting with an existing task* in a process
+* *Interacting with a process definition* image and form
 
-For example, consider you want to deploy the 1.0 version of a project and send the following request:
+For example, after you deploy the 1.0 version of a project, you send a POST request to the following {KIE_SERVER} REST API endpoint to start the process in the project:
 
-`http://localhost:8230/kie-server/services/rest/server/containers/my-project/processes/evaluation/instances`
+`/http://localhost:8230/kie-server/services/rest/server/containers/my-project/processes/evaluation/instances`
 
-The sent request starts a new process instance from `org.jbpm:my-project:1.0` in which `my-project` is defined as container alias. Later when you deploy the 2.0 version of the project and send the same request, a new instance starts from `org.jbpm:my-project:2.0`. Therefore, you can deploy the latest version of the process without adding the `containerID`.
+The sent request starts a new process instance from `org.jbpm:my-project:1.0` in which `my-project` is defined as the container alias. Later, when you deploy the 2.0 version of the project and send the same request, a new instance starts from `org.jbpm:my-project:2.0`. You can deploy the latest version of the process without adding the `containerID` name.

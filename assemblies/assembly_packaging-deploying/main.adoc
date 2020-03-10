@@ -29,13 +29,13 @@ include::{enterprise-dir}/admin-and-config/maven-external-export-proc.adoc[level
 
 include::{enterprise-dir}/project-data/project-build-deploy-central-proc.adoc[leveloffset=+2]
 
-include::{enterprise-dir}/project-data/container-alias-con.adoc[leveloffset=+2]
-
 include::{enterprise-dir}/admin-and-config/deployment-units-con.adoc[leveloffset=+2]
 
 include::{enterprise-dir}/admin-and-config/deployment-unit-create-proc.adoc[leveloffset=+3]
 
 include::{enterprise-dir}/admin-and-config/deployment-unit-manage-proc.adoc[leveloffset=+3]
+
+include::{enterprise-dir}/project-data/container-alias-con.adoc[leveloffset=+3]
 
 include::{enterprise-dir}/project-data/project-gav-setting-proc.adoc[leveloffset=+2]
 
