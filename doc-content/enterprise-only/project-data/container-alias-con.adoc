@@ -1,11 +1,11 @@
 [id='container-alias-con_{context}']
 = Container alias
 
-Container alias is a proxy to the KIE server instances and helps in handling different versions of the same server deployment. It is possible to link a single alias to different versions of a container, and when the container is upgraded, the linked alias automatically points to the new version of the container.
+Container alias is a proxy in the KIE server instances that helps in handling different versions of the same container deployment. It is possible to link a single alias to different versions of a container, for instance when the container is upgraded, the linked alias automatically points to the new version of the container. For information about creating an alias, see xref:deployment-unit-create-proc_packaging-deploying[].
 
-For instance, if a client application is changing every time a new version of a container is deployed, then the client application can point to the container alias. Therefore, when a new container version is deployed, the associated alias is updated and all the requests are routed automatically to the new container without changing the client application.
+Consider an example, if a client application is changing every time a new version of a container is deployed, then the client application can point to the container alias. Therefore, when a new container version is deployed, the associated alias is updated and all the requests are routed automatically to the new container without changing the client application.
 
-For example, consider there is a project containing a single process containing the following properties:
+Consider there is a project containing a single process containing the following properties:
 
 * `GroupId`: org.jbpm
 * `ArtifactId`: my-project
