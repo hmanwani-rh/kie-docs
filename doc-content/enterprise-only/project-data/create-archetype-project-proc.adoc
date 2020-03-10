@@ -17,7 +17,7 @@ For more information about archetypes management, see {URL_CONFIGURING_CENTRAL}[
 . Type the project name and description in the *Name* and *Description* fields.
 . Click *Configure Advanced Options*.
 . Select the *Based on template* checkbox.
-. If you want to use an archetype other than default archetype, click on the default archetype and select an archetype from the drop-down.
+. Select the archetype from drop-down options if required. The default archetype is selected that is already set in the space.
 . Click *Add*.
 
-The *Assets* view of the project opens.
+The Assets view of the project opens based on the selected archetype template.
