@@ -1,0 +1,87 @@
+[id='logging-events-database-proc']
+= Logging events to database
+
+You can log an event to a database that occurs on runtime in a process instance, element instance or variable instance.
+
+.Procedure
+. Map log classes to the data source that enables the data source to accept the log entries.
+* On {EAP}, edit the data source properties in the `persistence.xml` file.
+[source,code]
++
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence  version="1.0"  xsi:schemaLocation=
+    "http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd
+     http://java.sun.com/xml/ns/persistence/orm
+     http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+  xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://java.sun.com/xml/ns/persistence">
+
+  <persistence-unit name="org.jbpm.persistence.jpa">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>jdbc/processInstanceDS</jta-data-source>
+    <class>org.drools.persistence.info.SessionInfo</class>
+    <class>org.jbpm.persistence.processinstance.ProcessInstanceInfo</class>
+    <class>org.drools.persistence.info.WorkItemInfo</class>
+    <class>org.jbpm.process.audit.ProcessInstanceLog</class>
+    <class>org.jbpm.process.audit.NodeInstanceLog</class>
+    <class>org.jbpm.process.audit.VariableInstanceLog</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.max_fetch_depth" value="3"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.transaction.manager_lookup_class"
+                value="org.hibernate.transaction.BTMTransactionManagerLookup"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+----
+
+. Register a logger on your KIE session.
+.. Import the Loggers.
++
+[source,code]
+----
+import org.jbpm.process.audit.AuditLogService;
+import org.jbpm.process.audit.AuditLoggerFactory;
+import org.jbpm.process.audit.AuditLoggerFactory.Type;
+import org.jbpm.process.audit.JPAAuditLogService;
+...
+----
+
+.. Register a logger to a KIE session.
+[source,code]
++
+----
+@PersistenceUnit(unitName = PERSISTENCE_UNIT_NAME)
+  private EntityManagerFactory emf;
+
+  private AuditLogService auditLogService;
+@PostConstruct
+  public void configure() {
+
+  auditLogService = new JPAAuditLogService(emf);
+  ((JPAAuditLogService) auditLogService).setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
+
+  RuntimeEngine runtime = singletonManager.getRuntimeEngine(EmptyContext.get());
+  KieSession ksession = runtime.getKieSession();
+  AuditLoggerFactory.newInstance(Type.JPA, ksession, null);
+
+  }
+----
+
+. Optionally, call the method `addFilter` on the logger to filter out the irrelevant information.
+. View logger classes in audit view.
++
+[source,code]
+----
+<dependency>
+	<groupId>org.jbpm</groupId>
+	<artifactId>jbpm-audit</artifactId>
+	<version>6.5.0.Final-redhat-2</version>
+</dependency>
+----
