@@ -4,12 +4,23 @@
 
 Logging is a mechanism that allows you to store information about the execution of a process instance. You can log a process instance using a special event listener that listens to the {PROCESS_ENGINE} for any relevant events to be logged. Later, the information is stored separately from other non-log information that is stored either in the server built-in database (H2) or in a connected data source JPA or Hibernate.
 
-You can use the `jbpm-audit` module that provides an event listener and allows you to store the information directly in a database using JPA or Hibernate. The log data is stored as follows:
+You can use the `jbpm-audit` module that provides an event listener and allows you to store the information directly in a database using JPA or Hibernate.
 
-* Process instance as `processinstancelog`
+[source,subs="attributes+"]
+----
+<dependency>
+	<groupId>org.jbpm</groupId>
+	<artifactId>jbpm-audit</artifactId>
+	<version>{PRODUCT_VERSION_LONG}-redhat-2</version>
+</dependency>
+----
+
+The log data is stored as follows:
+
+* Process instance as `ProcessInstanceLog`
 +
 [id='fields_processinstancelog_{context}']
-.Fields of the processinstancelog table
+.Fields of the ProcessInstanceLog table
 [cols="25%,50%,25%", options="header"]
 |===
 
@@ -25,11 +36,11 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 |End date of a process instance
 |Yes
 
-|`processid`
+|`processId`
 |Id of an underlying process
 |Yes
 
-|`processinstanceid`
+|`processInstanceId`
 |Id of a process instance
 |No
 
@@ -51,10 +62,10 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 
 |===
 
-* Element instance as `nodeinstancelog`
+* Element instance as `NodeInstanceLog`
 +
 [id='fields_nodeinstancelog_{context}']
-.Fields of the nodeinstancelog table
+.Fields of the NodeInstanceLog table
 [cols="25%,50%,25%", options="header"]
 |===
 
@@ -70,23 +81,23 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 |Date of a log event
 |Yes
 
-|`nodeid`
+|`nodeId`
 |Node ID of an underlying process element
 |Yes
 
-|`nodeinstanceid`
+|`nodeInstanceId`
 |ID of a node instance
 |Yes
 
-|`nodename`
+|`nodeName`
 |Name of an underlying node
 |Yes
 
-|`processid`
+|`processId`
 |ID of an underlying process
 |Yes
 
-|`processinstanceid`
+|`processInstanceId`
 |ID of a parent process instance
 |No
 
@@ -96,10 +107,10 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 
 |===
 
-* Variable instance as `variableinstancelog`
+* Variable instance as `VariableInstanceLog`
 +
 [id='fields_variableinstancelog_{context}']
-.Fields of the variableinstancelog table
+.Fields of the VariableInstanceLog table
 [cols="25%,50%,25%", options="header"]
 |===
 
@@ -115,11 +126,11 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 |Date of a log event
 |Yes
 
-|`processid`
+|`processId`
 |ID of an underlying process
 |Yes
 
-|`processinstanceid`
+|`processInstanceId`
 |ID of a process instance
 |No
 
@@ -127,11 +138,11 @@ You can use the `jbpm-audit` module that provides an event listener and allows y
 |Value of a variable at log time
 |Yes
 
-|`variableid`
+|`variableId`
 |ID of a variable
 |Yes
 
-|`variableinstanceid`
+|`variableInstanceId`
 |ID of a variable instance
 |Yes
 

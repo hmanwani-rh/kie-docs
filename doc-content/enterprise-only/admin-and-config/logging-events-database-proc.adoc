@@ -1,7 +1,7 @@
 [id='logging-events-database-proc']
 = Logging events to database
 
-You can log an event to a database that occurs on runtime in a process instance, element instance or variable instance.
+You can log an event to a database that occurs on runtime in a process instance, node instance or variable instance.
 
 .Procedure
 . Map log classes to the data source that enables the data source to accept the log entries.
@@ -61,7 +61,7 @@ import org.jbpm.process.audit.JPAAuditLogService;
   private EntityManagerFactory emf;
 
   private AuditLogService auditLogService;
-@PostConstruct
+
   public void configure() {
 
   auditLogService = new JPAAuditLogService(emf);
@@ -76,12 +76,3 @@ import org.jbpm.process.audit.JPAAuditLogService;
 
 . Optionally, call the method `addFilter` on the logger to filter out the irrelevant information.
 . View logger classes in audit view.
-+
-[source,code]
-----
-<dependency>
-	<groupId>org.jbpm</groupId>
-	<artifactId>jbpm-audit</artifactId>
-	<version>6.5.0.Final-redhat-2</version>
-</dependency>
-----

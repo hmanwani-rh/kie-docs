@@ -5,6 +5,7 @@ Use `LogCleanupCommand` executor command to clean up the data that is using the 
 
 There are several configuration options that you can use with the `LogCleanupCommand`:
 
+[id='logcleanupcommand_parameters_{context}']
 .LogCleanupCommand parameters table
 [cols="1,2,1", options="header"]
 |===

@@ -1,5 +1,5 @@
 [id='manage-log-file-proc']
-= Manage log files
+= Managing log files
 
 {PRODUCT} manages the required maintenance, runtime data that is removed, including:
 
