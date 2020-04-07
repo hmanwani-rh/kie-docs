@@ -46,11 +46,6 @@ include::{enterprise-dir}/admin-and-config/central-login-customize-proc.adoc[lev
 include::{enterprise-dir}/admin-and-config/central-app-header-customize-proc.adoc[leveloffset=+2]
 include::{enterprise-dir}/installation/ldap-ssl-con.adoc[leveloffset=+1]
 
-//==Logging
-include::{enterprise-dir}/admin-and-config/log-process-instance-con.adoc[leveloffset=+1]
-include::{enterprise-dir}/admin-and-config/logging-events-database-proc.adoc[leveloffset=+2]
-include::{enterprise-dir}/admin-and-config/logging-configuration-logback-proc.adoc[leveloffset=+2]
-
 == Additional resources
 
 //* {URL_INSTALLING_PLANNER}[_{INSTALLING_PLANNER}_]

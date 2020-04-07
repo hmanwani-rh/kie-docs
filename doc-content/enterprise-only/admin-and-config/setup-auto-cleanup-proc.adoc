@@ -13,7 +13,7 @@ You can set up an automatic cleanup job in {CENTRAL}.
 org.jbpm.executor.commands.LogCleanupCommand
 ----
 
-. Click *Add Parameter* if you wish to use the <<logcleanupcommand_parameters_{context}, parameters>>, enter a parameter in the key section and enter true or false in the value section.
+. Click *Add Parameter* if you wish to use the <<logcleanupcommand_parameters_{context}, parameters>>, enter a parameter in the key section and enter a parameter value in the value section.
 . Click *Create* to finalize the job creation wizard.
 
 The automatic cleanup job is created successfully.
