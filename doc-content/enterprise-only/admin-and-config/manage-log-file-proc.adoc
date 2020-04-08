@@ -13,4 +13,4 @@ Runtime data, which is not cleaned automatically includes session information da
 * *Per request strategy* allows automatic removal when a request is terminated.
 * *Per process instances* are automatically removed when a process instance is mapped to a session that is completed or aborted.
 
-In order to keep track of process instances, {PRODUCT} provides audit data tables. There are two ways to manage and maintain the audit data tables, including cleaning up the jobs <<setup-auto-cleanup-proc, automatically>> and <<manual-cleanup-con, manually>>.
+In order to keep the track of process instances, {PRODUCT} provides audit data tables. There are two ways to manage and maintain the audit data tables, including cleaning up the jobs <<setup-auto-cleanup-proc, automatically>> and <<manual-cleanup-con, manually>>.
