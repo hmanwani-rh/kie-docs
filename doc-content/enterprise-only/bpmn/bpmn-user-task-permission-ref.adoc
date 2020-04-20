@@ -3,7 +3,7 @@
 
 The user task permission matrix summarizes the actions that are allowed for specific user roles. The user roles are as follows:
 
-* Potential owner: User who can claim the task, which was claimed earlier and has been released and forwarded. The tasks with `Ready` status can be claimed, and the potential owner becomes the actual owner of the task.
+* Potential owner: User who can claim the task, which was claimed earlier and is released and forwarded. The tasks with `Ready` status can be claimed, and the potential owner becomes the actual owner of the task.
 * Actual owner: User who claims the task and progresses the task to completion or failure.
 * Business administrator: Super user who can modify the status or progress with the task at any point of the task life cycle.
 
