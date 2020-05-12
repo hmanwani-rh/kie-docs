@@ -36,3 +36,18 @@ try {
 
 For information about built-in event listeners and debug logging in the {DECISION_ENGINE}, see xref:engine-event-listeners-con_decision-engine[].
 --
+
+Use lambda externalization for executable models::
+Enable the lambda externalization which optimizes the memory consumption at runtime. You can rewrite the lambdas that are generated and used in an executable model, enabling you to reuse the same lambda multiple times with all the patterns and the same constraint. Once the rete or phreak instantiates from an executable model, it becomes garbage collectible.
++
+--
+Use the following property to enable the lambda externalization for an executable model:
+
+[source]
+----
+-Ddrools.externaliseCanonicalModelLambda=true
+----
+
+NOTE: Sometimes enabling lambda externalization can lead to `OutOfMemory` error.
+
+--
