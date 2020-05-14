@@ -38,10 +38,10 @@ For information about built-in event listeners and debug logging in the {DECISIO
 --
 
 Use lambda externalization for executable model::
-Enable lambda externalization which optimizes the memory consumption at runtime. It rewrites lambdas that are generated and used in the executable model, enabling you to reuse the same lambda multiple times with all the patterns and the same constraint. The executable model becomes garbage collectible once the rete and phreak is instantiated.
+Enable lambda externalization to optimize the memory consumption during runtime. It rewrites lambdas that are generated and used in the executable model. This enables you to reuse the same lambda multiple times with all the patterns and the same constraint. When the rete or phreak is instantiated, the executable model becomes garbage collectible. 
 +
 --
-Use the following property to enable lambda externalization for the executable model:
+To enable lambda externalization for the executable model, include the following property:
 
 [source]
 ----
