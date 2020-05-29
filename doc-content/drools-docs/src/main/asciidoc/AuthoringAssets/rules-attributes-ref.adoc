@@ -107,7 +107,17 @@ Example: `lock-on-active true`
 Example: `ruleflow-group "GroupName"`
 
 |`dialect`
-|A string identifying either `JAVA` or `MVEL` as the language to be used for code expressions in the rule. By default, the rule uses the dialect specified at the package level. Any dialect specified here overrides the package dialect setting for the rule.
+a|A string identifying either `JAVA` or `MVEL` as the language to be used for code expressions in the rule. By default, the rule uses the dialect specified at the package level. Any dialect specified here overrides the package dialect setting for the rule.
 
 Example: `dialect "JAVA"`
+
+NOTE: When you use {PRODUCT} without an executable rule model, the consequences that are written using `dialect "JAVA"` are supported until JAVA 5 version. For more information about executable rule models, see
+ifdef::DM,PAM[]
+{URL_PACKAGING_DEPLOYING_PROJECT}#executable-model-con_packaging-deploying[_{PACKAGING_DEPLOYING_PROJECT}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+xref:executable-model-con_packaging-deploying[].
+endif::[]
+
+
 |===
