@@ -37,5 +37,5 @@ try {
 For information about built-in event listeners and debug logging in the {DECISION_ENGINE}, see xref:engine-event-listeners-con_decision-engine[].
 --
 
-Use lambda introspection for executable models to configure the cache size::
-You can enable lambda introspection to configure the size of `LambdaIntrospector.methodFingerprintsMap` cache. The default size of the cache for an executable model is `32`. Small cache size optimizes the usage of memory for an executable model. For example, you can configure system property `drools.lambda.introspector.cache.size` to `0` for optimized memory usage.
+Configure `LambdaIntrospector` cache size for an executable model build::::
+You can configure the size of `LambdaIntrospector.methodFingerprintsMap` cache, which is used in an executable model build. The default size of the cache is `32`. When you configure smaller value for the cache size, it reduces memory usage. For example, you can configure system property `drools.lambda.introspector.cache.size` to `0` for minimum memory usage. Note that smaller cache size also slows down the build performance. 
