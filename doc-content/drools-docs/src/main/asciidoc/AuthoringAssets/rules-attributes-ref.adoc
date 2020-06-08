@@ -111,7 +111,7 @@ a|A string identifying either `JAVA` or `MVEL` as the language to be used for co
 
 Example: `dialect "JAVA"`
 
-NOTE: When you use {PRODUCT} without the executable model, the consequences that are written using `dialect "JAVA"` support only Java 5 syntax. For more information about executable models, see
+NOTE: When you use {PRODUCT} without the executable model, the `dialect "JAVA"` rule consequences support only Java 5 syntax. For more information about executable models, see
 ifdef::DM,PAM[]
 {URL_PACKAGING_DEPLOYING_PROJECT}#executable-model-con_packaging-deploying[_{PACKAGING_DEPLOYING_PROJECT}_].
 endif::[]
