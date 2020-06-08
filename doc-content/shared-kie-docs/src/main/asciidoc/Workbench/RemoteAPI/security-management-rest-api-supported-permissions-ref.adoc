@@ -1,0 +1,124 @@
+[id='security-management-rest-api-supported-permissions-ref_{context}']
+= Supported permissions in {CENTRAL}
+
+The following are available permissions in {PRODUCT}. Administrators use these permissions to allow specific actions to a group, role, or user in {CENTRAL}.
+
+Priority::
+Priority is an integer that defines the precedence of users with multiple assigned roles or groups. The default value of priority for a new group is `-100`. You can set the priority using the following values:
++
+--
+.Priority value table
+[cols="50%,50%", frame="all", options="header"]
+|===
+|Priority
+|Value
+
+|VERY_HIGH
+|10
+
+|HIGH
+|5
+
+|NORMAL
+|0
+
+|LOW
+|-5
+
+|VERY_LOW
+|-10
+|===
+
+When you pass an integer to priority, it is resolved as follows:
+
+[source,code]
+----
+  if (priority < -5) {
+      return Priority.VERY_LOW;
+  }
+
+  if (priority < 0) {
+      return Priority.LOW;
+  }
+
+  if (priority == 0) {
+      return Priority.NORMAL;
+  }
+
+  if (priority <= 5) {
+      return Priority.HIGH;
+  }
+
+  if (priority > 5) {
+      return Priority.VERY_HIGH;
+  }
+----
+--
+
+Home Page::
+`homePage` indicates the default landing page for users.
+
+Workbench::
+Workbench consists of the following defined permissions:
++
+--
+[source,code]
+----
+{
+        "editDataObject": true,
+        "plannerAvailable": true,
+        "editGlobalPreferences": true,
+        "editProfilePreferences": true,
+        "accessDataTransfer": true,
+        "jarDownload": true,
+        "editGuidedDecisionTableColumns": true
+    }
+----
+--
+
+Pages, Editor, Spaces, and Projects::
+You can add a group, role, or user name as a key and grant relevant permissions as follows:
++
+--
+* `PAGES: read,create,update,delete`
+* `EDITOR: read`
+* `SPACES: read,update,delete,create`
+* `PROJECT: read,create,update,delete,build`
+
+You can use following code to add exceptions  *Pages*, *Editor*, *Spaces*, and *Projects* permissions:
+
+[source,code]
+----
+[
+      {
+            "name": "HomePerspective",
+            "permissions": {
+                    "create": true,
+                    "read": true,
+                    "delete": false
+                }
+          }
+    ]
+----
+
+.Example object (JSON)
+[source,json]
+----
+"pages": {
+      "create": true,
+      "read": true,
+      "delete": false,
+      "update": false,
+      "exceptions": [
+          {
+              "name": "HomePerspective",
+              "permissions": {
+                  "create": true,
+                  "read": true,
+                  "delete": false
+              }
+          }
+      ]
+  }
+----
+--
