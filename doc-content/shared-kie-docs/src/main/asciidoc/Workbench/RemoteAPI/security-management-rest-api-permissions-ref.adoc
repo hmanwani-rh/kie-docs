@@ -170,8 +170,8 @@ Returns all permissions granted to a specified user.
 [source,json]
 ----
 {
-    "homePage": "HomePerspective",
-    "priority": -10,
+    "homePage": null,
+    "priority": null,
     "project": {
         "read": {
             "access": false,
@@ -241,27 +241,10 @@ Updates the permissions of a specified group.
 .Example request body (JSON)
 [source,json]
 ----
-
-
-    "project": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "spaces": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "editor": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "pages": {
+{
+  "homepage": "HomePerspective",
+              "priority" : 10,
+ "pages": {
         "create": true,
         "read": false,
         "delete": false,
@@ -270,12 +253,35 @@ Updates the permissions of a specified group.
             {
                 "name": "HomePerspective",
                 "permissions": {
-                    "create": true,
-                    "read": true,
-                    "delete": false
+                    "read": true
                 }
             }
         ]
+    },
+    "project": {
+        "create": true,
+        "read": true,
+        "delete": false,
+        "update": false,
+        "Build": false
+    },
+    "spaces": {
+        "create": true,
+        "read": true,
+        "delete": false,
+        "update": false
+    },
+    "editor": {
+        "read": true
+    },
+"workbench": {
+        "editDataObject": true,
+        "plannerAvailable": true,
+        "editGlobalPreferences": true,
+        "editProfilePreferences": true,
+        "accessDataTransfer": true,
+        "jarDownload": true,
+        "editGuidedDecisionTableColumns": true
     }
 }
 ----
@@ -313,25 +319,9 @@ Updates the permissions of a specified role.
 [source,json]
 ----
 {
-    "project": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "spaces": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "editor": {
-        "create": true,
-        "read": true,
-        "delete": false,
-        "update": false
-    },
-    "pages": {
+  "homepage": "HomePerspective",
+              "priority" : 10,
+ "pages": {
         "create": true,
         "read": false,
         "delete": false,
@@ -340,12 +330,35 @@ Updates the permissions of a specified role.
             {
                 "name": "HomePerspective",
                 "permissions": {
-                    "create": true,
-                    "read": true,
-                    "delete": false
+                    "read": true
                 }
             }
         ]
+    },
+    "project": {
+        "create": true,
+        "read": true,
+        "delete": false,
+        "update": false,
+        "Build": false
+    },
+    "spaces": {
+        "create": true,
+        "read": true,
+        "delete": false,
+        "update": false
+    },
+    "editor": {
+        "read": true
+    },
+"workbench": {
+        "editDataObject": true,
+        "plannerAvailable": true,
+        "editGlobalPreferences": true,
+        "editProfilePreferences": true,
+        "accessDataTransfer": true,
+        "jarDownload": true,
+        "editGuidedDecisionTableColumns": true
     }
 }
 ----

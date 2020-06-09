@@ -35,7 +35,7 @@ Creates a group in {CENTRAL}.
 |Requirement
 
 |*body*
-|The `name`, `roles`, `groups` and any other components of the new group.
+|The `name`, `roles`, `groups` and any other components of the new group
 |Request body
 |Required
 |===
@@ -44,10 +44,10 @@ Creates a group in {CENTRAL}.
 [source,json]
 ----
 {
-	"name": "newGroup",
-	"roles" : ["roles.."],
-	"groups" : ["groups.."]
+  "name": "groupName",
+  "users" : ["userNames"]
 }
+
 ----
 
 .Example server response (JSON)
