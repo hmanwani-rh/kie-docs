@@ -1,7 +1,7 @@
 [id='security-management-rest-api-groups-ref_{context}']
 = Groups
 
-The Security Management REST API supports the following endpoints for managing groups in {CENTRAL}. The Security Management REST API base URL is `http://SERVER:PORT/business-central/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `rest-all` user role.
+The Security Management REST API supports the following endpoints for managing groups in {CENTRAL}. The Security Management REST API base URL is `http://SERVER:PORT/business-central/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `admin` user role.
 
 [GET] /groups::
 +
