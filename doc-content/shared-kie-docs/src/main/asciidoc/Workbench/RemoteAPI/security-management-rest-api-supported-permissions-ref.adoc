@@ -40,14 +40,14 @@ Workbench consists of the following defined permissions:
 [source,json]
 ----
 {
-        "editDataObject": true,
-        "plannerAvailable": true,
-        "editGlobalPreferences": true,
-        "editProfilePreferences": true,
-        "accessDataTransfer": true,
-        "jarDownload": true,
-        "editGuidedDecisionTableColumns": true
-    }
+	"editDataObject": true,
+	"plannerAvailable": true,
+	"editGlobalPreferences": true,
+	"editProfilePreferences": true,
+	"accessDataTransfer": true,
+	"jarDownload": true,
+	"editGuidedDecisionTableColumns": true
+}
 ----
 --
 
@@ -64,16 +64,14 @@ You can use following code to add exceptions to *Pages*, *Editor*, *Spaces*, and
 
 [source,json]
 ----
-[
-      {
-            "name": "HomePerspective",
-            "permissions": {
-                    "create": true,
-                    "read": true,
-                    "delete": false
-                }
-          }
-    ]
+[{
+	"name": "HomePerspective",
+	"permissions": {
+		"create": true,
+		"read": true,
+		"delete": false
+	}
+}]
 ----
 The `name` attribute is an identifier of a resource that you add as an exception. Use the following REST API endpoints to get the list of possible identifiers. The REST API base URL is `http://SERVER:PORT/business-central/rest/`.
 
@@ -86,16 +84,14 @@ The `name` attribute is an identifier of a resource that you add as an exception
 [source,json]
 ----
 "pages": {
-        "create": true,
-        "read": false,
-        "exceptions": [
-            {
-                "name": "HomePerspective",
-                "permissions": {
-                    "read": true
-                }
-            }
-        ]
-    }
+	"create": true,
+	"read": false,
+	"exceptions": [{
+		"name": "HomePerspective",
+		"permissions": {
+			"read": true
+		}
+	}]
+}
 ----
 --

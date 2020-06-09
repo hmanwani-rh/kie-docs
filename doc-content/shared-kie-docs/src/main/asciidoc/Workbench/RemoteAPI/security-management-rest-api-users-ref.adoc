@@ -41,13 +41,12 @@ Returns all groups assigned to a specified user.
 .Example server response (JSON)
 [source,json]
 ----
-[
-{
-  "group1"
-},
-{
-  "group2"
-}
+[{
+		"group1"
+	},
+	{
+		"group2"
+	}
 ]
 ----
 --
@@ -74,16 +73,15 @@ Returns all roles assigned to a specified user.
 .Example server response (JSON)
 [source,json]
 ----
-[
-   {
-       "name": "process-admin"
-   },
-   {
-       "name": "manager"
-   },
-   {
-       "name": "admin"
-   }
+[{
+		"name": "process-admin"
+	},
+	{
+		"name": "manager"
+	},
+	{
+		"name": "admin"
+	}
 ]
 ----
 --
@@ -98,8 +96,8 @@ Creates a specified user with specified roles and groups.
 ----
 {
 	"name": "newUser",
-	"roles" : ["roles.."],
-	"groups" : ["groups.."]
+	"roles": ["roles.."],
+	"groups": ["groups.."]
 }
 ----
 
@@ -107,8 +105,8 @@ Creates a specified user with specified roles and groups.
 [source,json]
 ----
 {
-   "status": "OK",
-   "message": "User newUser is created successfully."
+	"status": "OK",
+	"message": "User newUser is created successfully."
 }
 ----
 --
@@ -200,7 +198,7 @@ Updates the groups assigned to a specified user.
 [source,json]
 ----
 [
-  "newGroup"
+	"newGroup"
 ]
 ----
 
@@ -237,7 +235,7 @@ Updates the roles assigned to a specified user.
 [source,json]
 ----
 [
-  "admin"
+	"admin"
 ]
 ----
 

@@ -11,13 +11,12 @@ Returns all groups in {CENTRAL}.
 .Example server response (JSON)
 [source,json]
 ----
-[
-{
-  "group1"
-},
-{
-  "group2"
-}
+[{
+		"group1"
+	},
+	{
+		"group2"
+	}
 ]
 ----
 --
@@ -35,7 +34,7 @@ Creates a group in {CENTRAL}.
 |Requirement
 
 |*body*
-|The `name`, `roles`, `groups` and any other components of the new group
+|Name of the group and users assigned to the new group
 |Request body
 |Required
 |===
@@ -44,10 +43,9 @@ Creates a group in {CENTRAL}.
 [source,json]
 ----
 {
-  "name": "groupName",
-  "users" : ["userNames"]
+	"name": "groupName",
+	"users": ["userNames"]
 }
-
 ----
 
 .Example server response (JSON)
