@@ -1,7 +1,7 @@
 [id='security-management-rest-api-users-ref_{context}']
 = Users
 
-The Security Management REST API supports the following endpoints for managing users in {CENTRAL}. The Security Management REST API base URL is `http://SERVER:PORT/business-central/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `admin` user role.
+The Security Management REST API supports the following endpoints for managing users in {CENTRAL}. The Security Management REST API base URL is `\http://SERVER:PORT/{URL_COMPONENT_CENTRAL}/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `admin` user role.
 
 [GET] /users::
 +
@@ -33,7 +33,7 @@ Returns all groups assigned to a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose assigned groups to be returned
+|Name of the user for whom you are retrieving assigned groups
 |String
 |Required
 |===
@@ -65,7 +65,7 @@ Returns all roles assigned to a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose assigned roles to be returned
+|Name of the user for whom you are retrieving assigned roles
 |String
 |Required
 |===
@@ -73,15 +73,16 @@ Returns all roles assigned to a specified user.
 .Example server response (JSON)
 [source,json]
 ----
-[{
-		"name": "process-admin"
-	},
-	{
-		"name": "manager"
-	},
-	{
-		"name": "admin"
-	}
+[
+  {
+    "name": "process-admin"
+  },
+  {
+    "name": "manager"
+  },
+  {
+    "name": "admin"
+  }
 ]
 ----
 --
@@ -95,9 +96,13 @@ Creates a specified user with specified roles and groups.
 [source,json]
 ----
 {
-	"name": "newUser",
-	"roles": ["roles.."],
-	"groups": ["groups.."]
+  "name": "newUser",
+  "roles": [
+    "roles.."
+  ],
+  "groups": [
+    "groups.."
+  ]
 }
 ----
 
@@ -105,8 +110,8 @@ Creates a specified user with specified roles and groups.
 [source,json]
 ----
 {
-	"status": "OK",
-	"message": "User newUser is created successfully."
+  "status": "OK",
+  "message": "User newUser is created successfully."
 }
 ----
 --
@@ -125,23 +130,23 @@ Changes the password of a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose password to be changed
+|Name of the user for whom you are changing the password
 |String
 |Required
 |===
 
 .Example request command
-[source]
+[source,subs="attributes+"]
 ----
-curl -u 'wbadmin:wbadmin' -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8080/business-central/rest/users/titan/changePassword" -d newpassword
+curl -u 'baAdmin:password@1' -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/changePassword" -d newpassword
 ----
 
 .Example server response (JSON)
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "Password for newUser has been updated successfully."
+  "status": "OK",
+  "message": "Password for newUser has been updated successfully."
 }
 ----
 --
@@ -169,8 +174,8 @@ Deletes a specified user from {CENTRAL}.
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "User newUser is deleted successfully."
+  "status": "OK",
+  "message": "User newUser is deleted successfully."
 }
 ----
 --
@@ -189,7 +194,7 @@ Updates the groups assigned to a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose assigned groups to be updated
+|Name of the user for whom you are updating groups
 |String
 |Required
 |===
@@ -198,7 +203,7 @@ Updates the groups assigned to a specified user.
 [source,json]
 ----
 [
-	"newGroup"
+  "newGroup"
 ]
 ----
 
@@ -206,8 +211,8 @@ Updates the groups assigned to a specified user.
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "Groups [newGroup] are assigned successfully to user wbadmin"
+  "status": "OK",
+  "message": "Groups [newGroup] are assigned successfully to user wbadmin"
 }
 ----
 --
@@ -226,7 +231,7 @@ Updates the roles assigned to a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose assigned roles to be updated
+|Name of the user for whom you are updating roles
 |String
 |Required
 |===
@@ -235,7 +240,7 @@ Updates the roles assigned to a specified user.
 [source,json]
 ----
 [
-	"admin"
+  "admin"
 ]
 ----
 
@@ -243,8 +248,8 @@ Updates the roles assigned to a specified user.
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "Roles [admin] are assigned successfully to user wbadmin"
+  "status": "OK",
+  "message": "Roles [admin] are assigned successfully to user wbadmin"
 }
 ----
 --

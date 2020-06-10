@@ -1,7 +1,7 @@
 [id='security-management-rest-api-permissions-ref_{context}']
 = Permissions
 
-The Security Management REST API supports the following endpoints for managing permissions granted to the groups, roles and users in {CENTRAL}. The Security Management REST API base URL is `http://SERVER:PORT/business-central/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `admin` user role.
+The Security Management REST API supports the following endpoints for managing permissions granted to the groups, roles, and users in {CENTRAL}. The Security Management REST API base URL is `\http://SERVER:PORT/{URL_COMPONENT_CENTRAL}/rest/`. All requests require HTTP Basic authentication or token-based authentication for the `admin` user role.
 
 [GET] /groups/{groupName}/permissions::
 +
@@ -17,7 +17,7 @@ Returns all permissions granted to a specified group.
 |Requirement
 
 |`groupName`
-|Name of the group whose permissions to be returned
+|Name of the group for whom you are retrieving permissions
 |String
 |Required
 |===
@@ -89,7 +89,7 @@ Returns all permissions granted to a specified role.
 |Requirement
 
 |`roleName`
-|Name of the role whose permissions to be returned
+|Name of the role for whom you are retrieving permissions
 |String
 |Required
 |===
@@ -161,7 +161,7 @@ Returns all permissions granted to a specified user.
 |Requirement
 
 |`userName`
-|Name of the user whose permissions to be returned
+|Name of the user for whom you are retrieving permissions
 |String
 |Required
 |===
@@ -233,7 +233,7 @@ Updates the permissions of a specified group.
 |Requirement
 
 |`groupName`
-|Name of the group whose permissions to be updated
+|Name of the group for whom you are updating permissions
 |String
 |Required
 |===
@@ -242,45 +242,47 @@ Updates the permissions of a specified group.
 [source,json]
 ----
 {
-	"homepage": "HomePerspective",
-	"priority": 10,
-	"pages": {
-		"create": true,
-		"read": false,
-		"delete": false,
-		"update": false,
-		"exceptions": [{
-			"name": "HomePerspective",
-			"permissions": {
-				"read": true
-			}
-		}]
-	},
-	"project": {
-		"create": true,
-		"read": true,
-		"delete": false,
-		"update": false,
-		"Build": false
-	},
-	"spaces": {
-		"create": true,
-		"read": true,
-		"delete": false,
-		"update": false
-	},
-	"editor": {
-		"read": true
-	},
-	"workbench": {
-		"editDataObject": true,
-		"plannerAvailable": true,
-		"editGlobalPreferences": true,
-		"editProfilePreferences": true,
-		"accessDataTransfer": true,
-		"jarDownload": true,
-		"editGuidedDecisionTableColumns": true
-	}
+  "homepage": "HomePerspective",
+  "priority": 10,
+  "pages": {
+    "create": true,
+    "read": false,
+    "delete": false,
+    "update": false,
+    "exceptions": [
+      {
+        "name": "HomePerspective",
+        "permissions": {
+          "read": true
+        }
+      }
+    ]
+  },
+  "project": {
+    "create": true,
+    "read": true,
+    "delete": false,
+    "update": false,
+    "Build": false
+  },
+  "spaces": {
+    "create": true,
+    "read": true,
+    "delete": false,
+    "update": false
+  },
+  "editor": {
+    "read": true
+  },
+  "workbench": {
+    "editDataObject": true,
+    "plannerAvailable": true,
+    "editGlobalPreferences": true,
+    "editProfilePreferences": true,
+    "accessDataTransfer": true,
+    "jarDownload": true,
+    "editGuidedDecisionTableColumns": true
+  }
 }
 ----
 
@@ -288,8 +290,8 @@ Updates the permissions of a specified group.
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "Group newGroup permissions are updated successfully."
+  "status": "OK",
+  "message": "Group newGroup permissions are updated successfully."
 }
 ----
 --
@@ -308,7 +310,7 @@ Updates the permissions of a specified role.
 |Requirement
 
 |`roleName`
-|Name of the role whose permissions to be updated
+|Name of the role for whom you are updating permissions
 |String
 |Required
 |===
@@ -363,8 +365,8 @@ Updates the permissions of a specified role.
 [source,json]
 ----
 {
-    "status": "OK",
-    "message": "Role newRole permissions are updated successfully."
+  "status": "OK",
+  "message": "Role newRole permissions are updated successfully."
 }
 ----
 --

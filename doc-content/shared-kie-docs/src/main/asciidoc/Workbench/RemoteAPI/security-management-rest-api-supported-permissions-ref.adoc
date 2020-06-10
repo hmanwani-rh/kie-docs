@@ -19,7 +19,7 @@ Priority is an integer that defines the precedence of users who are assigned mul
 |Less than -5
 |VERY LOW
 
-|Equals to 0
+|Equal to 0
 |NORMAL
 
 |Between 0 and 5
@@ -31,7 +31,7 @@ Priority is an integer that defines the precedence of users who are assigned mul
 --
 
 Home Page::
-`homePage` indicates the default landing page for users.
+Home Page indicates the default landing page for users.
 
 Workbench::
 Workbench consists of the following defined permissions:
@@ -40,13 +40,13 @@ Workbench consists of the following defined permissions:
 [source,json]
 ----
 {
-	"editDataObject": true,
-	"plannerAvailable": true,
-	"editGlobalPreferences": true,
-	"editProfilePreferences": true,
-	"accessDataTransfer": true,
-	"jarDownload": true,
-	"editGuidedDecisionTableColumns": true
+  "editDataObject": true,
+  "plannerAvailable": true,
+  "editGlobalPreferences": true,
+  "editProfilePreferences": true,
+  "accessDataTransfer": true,
+  "jarDownload": true,
+  "editGuidedDecisionTableColumns": true
 }
 ----
 --
@@ -57,30 +57,32 @@ The following are possible values for the permissions based on the resource type
 --
 * `PAGES: read,create,update,delete`
 * `EDITOR: read`
-* `SPACES: read,update,delete,create`
+* `SPACES: read,create,update,delete`
 * `PROJECT: read,create,update,delete,build`
 
 You can use following code to add exceptions to *Pages*, *Editor*, *Spaces*, and *Projects* permissions:
 
 [source,json]
 ----
-[{
-	"name": "HomePerspective",
-	"permissions": {
-		"create": true,
-		"read": true,
-		"delete": false
-	}
-}]
+[
+  {
+    "name": "HomePerspective",
+    "permissions": {
+      "create": true,
+      "read": true,
+      "delete": false
+    }
+  }
+]
 ----
-The `name` attribute is an identifier of a resource that you add as an exception. Use the following REST API endpoints to get the list of possible identifiers. The REST API base URL is `http://SERVER:PORT/business-central/rest/`.
+The `name` attribute is an identifier of a resource that you add as an exception. Use the following REST API endpoints to get the list of possible identifiers. The REST API base URL is `\http://SERVER:PORT/{URL_COMPONENT_CENTRAL}/rest/`.
 
-* `[GET] /perspectives`: Returns all pages in {CENTRAL}.
-* `[GET] /editors`: Returns all editors in {CENTRAL}.
-* `[GET] /spaces`: Returns all spaces in {CENTRAL}.
-* `[GET] /spaces/{spaceName}/projects`: Returns projects in a specified space.
+* `[GET] /perspectives`: Returns perspective names of all pages in {CENTRAL}
+* `[GET] /editors`: Returns all editors in {CENTRAL}
+* `[GET] /spaces`: Returns all spaces in {CENTRAL}
+* `[GET] /spaces/{spaceName}/projects`: Returns projects in a specified space
 
-.Example object (JSON)
+.Example server response for pages (JSON)
 [source,json]
 ----
 "pages": {
