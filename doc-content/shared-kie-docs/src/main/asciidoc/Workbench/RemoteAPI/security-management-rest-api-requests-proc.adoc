@@ -62,7 +62,7 @@ For REST client:
 ** `Content-Type`: `application/json`
 * *HTTP method*: Set to `POST`.
 * *URL*: Enter the Security Management REST API base URL and endpoint, such as `\http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups`.
-* *Request body*: Add a JSON request body with the identification data for the new project:
+* *Request body*: Add a JSON request body with the identification data for the new group:
 
 [source,json]
 ----
@@ -79,7 +79,7 @@ For curl utility:
 ** `content-type`: `application/json`
 * `-X`: Set to `POST`.
 * *URL*: Enter the Security Management REST API base URL and endpoint, such as `\http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups`.
-* `-d`: Add a JSON request body or file (`@file.json`) with the identification data for the new project:
+* `-d`: Add a JSON request body or file (`@file.json`) with the identification data for the new group:
 
 [source,subs="attributes+"]
 ----
