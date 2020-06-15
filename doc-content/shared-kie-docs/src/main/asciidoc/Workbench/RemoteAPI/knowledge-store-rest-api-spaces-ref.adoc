@@ -227,6 +227,32 @@ Creates a space in {CENTRAL}.
 }
 ----
 --
+
+[PUT] /spaces::
++
+--
+Updates `description`, `owner`, and `defaultGroupId` of a space in {CENTRAL}.
+
+.Example request body (JSON)
+[source,json]
+----
+{
+  "name": "MySpace",
+  "description": "This is updated description",
+  "owner": "admin",
+  "defaultGroupId": "com.updatedGroupId"
+}
+----
+
+.Example server response (JSON)
+[source,json]
+----
+{
+  "status": "OK",
+  "message": "Space MySpace is updated successfully."
+}
+----
+--
 [DELETE] /spaces/{spaceName}::
 +
 --
