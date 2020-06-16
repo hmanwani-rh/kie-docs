@@ -43,7 +43,7 @@ Example server response (JSON):
 [source,json]
 ----
 [
-	{
+  	{
 		"group1"
 	},
 	{
@@ -77,19 +77,19 @@ For curl utility:
 * `-u`: Enter the user name and password of the {CENTRAL} user with the `admin` role.
 * `-H`: Set the following headers:
 ** `Accept`: `application/json`
-** `Content-type`: `application/json`
+** `Content-Type`: `application/json`
 * `-X`: Set to `POST`.
 * *URL*: Enter the Security Management REST API base URL and endpoint, such as `\http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups`.
 * `-d`: Add a JSON request body or file (`@file.json`) with the identification data for the new group:
 
 [source,subs="attributes+"]
 ----
-curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups" -d "["newGroup"]"
+curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-Type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups" -d "["newGroup"]"
 ----
 
 [source,subs="attributes+"]
 ----
-curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups" -d @user-groups.json
+curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-Type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/groups" -d @user-groups.json
 ----
 --
 . Execute the request and review the {KIE_SERVER} response.

@@ -12,7 +12,7 @@ Returns all groups in {CENTRAL}.
 [source,json]
 ----
 [
-	{
+  	{
 		"group1"
 	},
 	{
