@@ -41,7 +41,8 @@ Returns all groups assigned to a specified user.
 .Example server response (JSON)
 [source,json]
 ----
-[{
+[
+  {
 		"group1"
 	},
 	{
@@ -98,10 +99,12 @@ Creates a specified user with specified roles and groups.
 {
   "name": "newUser",
   "roles": [
-    "roles.."
+    "admin",
+    "developer"
   ],
   "groups": [
-    "groups.."
+    "group1",
+    "group2"
   ]
 }
 ----
@@ -138,7 +141,7 @@ Changes the password of a specified user.
 .Example request command
 [source,subs="attributes+"]
 ----
-curl -u 'baAdmin:password@1' -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/changePassword" -d newpassword
+curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/changePassword" -d newpassword
 ----
 
 .Example server response (JSON)
@@ -183,7 +186,7 @@ Deletes a specified user from {CENTRAL}.
 [POST] /users/{userName}/groups::
 +
 --
-Updates the groups assigned to a specified user.
+Overrides the existing groups assigned to a specified user with new groups.
 
 .Request parameters
 [cols="15%,45%,15%,25%", frame="all", options="header"]
@@ -220,7 +223,7 @@ Updates the groups assigned to a specified user.
 [POST] /users/{userName}/roles::
 +
 --
-Updates the roles assigned to a specified user.
+Overrides the existing roles assigned to a specified user with new roles.
 
 .Request parameters
 [cols="15%,45%,15%,25%", frame="all", options="header"]

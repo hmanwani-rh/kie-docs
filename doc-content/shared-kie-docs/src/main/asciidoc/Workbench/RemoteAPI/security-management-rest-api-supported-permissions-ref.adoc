@@ -13,11 +13,11 @@ Priority is an integer that defines the precedence of users who are assigned mul
 |Integer value
 |Priority
 
-|Between -5 and 0
-|LOW
-
 |Less than -5
 |VERY LOW
+
+|Between -5 and 0
+|LOW
 
 |Equal to 0
 |NORMAL
@@ -88,12 +88,14 @@ The `name` attribute is an identifier of a resource that you add as an exception
 "pages": {
 	"create": true,
 	"read": false,
-	"exceptions": [{
+	"exceptions": [
+    {
 		"name": "HomePerspective",
 		"permissions": {
 			"read": true
 		}
-	}]
+	}
+]
 }
 ----
 --

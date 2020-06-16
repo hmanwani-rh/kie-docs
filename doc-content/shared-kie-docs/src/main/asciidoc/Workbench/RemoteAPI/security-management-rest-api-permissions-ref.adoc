@@ -39,7 +39,7 @@ Returns all permissions granted to a specified group.
 		"read": {
 			"access": true,
 			"exceptions": [
-				"dsaddsa"
+				"MySpace"
 			]
 		},
 	},
@@ -111,7 +111,7 @@ Returns all permissions granted to a specified role.
 		"read": {
 			"access": true,
 			"exceptions": [
-				"dsaddsa"
+				"MySpace"
 			]
 		},
 	},
@@ -183,7 +183,7 @@ Returns all permissions granted to a specified user.
 		"read": {
 			"access": true,
 			"exceptions": [
-				"dsaddsa"
+				"MySpace"
 			]
 		},
 	},

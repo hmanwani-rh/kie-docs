@@ -11,7 +11,8 @@ Returns all groups in {CENTRAL}.
 .Example server response (JSON)
 [source,json]
 ----
-[{
+[
+	{
 		"group1"
 	},
 	{
