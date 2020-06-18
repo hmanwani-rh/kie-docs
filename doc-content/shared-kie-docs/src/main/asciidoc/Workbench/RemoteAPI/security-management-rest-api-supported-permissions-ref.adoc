@@ -64,16 +64,25 @@ You can use following code to add exceptions to *Pages*, *Editor*, *Spaces*, and
 
 [source,json]
 ----
-[
-  {
-    "name": "HomePerspective",
-    "permissions": {
-      "create": true,
-      "read": true,
-      "delete": false
-    }
+{
+  "pages": {
+    "read": false,
+    "exceptions": [
+      {
+        "resourceName": "ProcessInstances",
+        "permissions": {
+          "read": false
+        }
+      },
+      {
+        "resourceName": "ProcessDefinitions",
+        "permissions": {
+          "read": false
+        }
+      }
+    ]
   }
-]
+}
 ----
 The `name` attribute is an identifier of a resource that you add as an exception. Use the following REST API endpoints to get the list of possible identifiers. The REST API base URL is `\http://SERVER:PORT/{URL_COMPONENT_CENTRAL}/rest/`.
 

@@ -24,7 +24,7 @@ Returns all groups in {CENTRAL}.
 [POST] /groups::
 +
 --
-Creates a group in {CENTRAL}.
+Creates a group in {CENTRAL}. A group must have at least one user assigned.
 
 .Request parameters
 [cols="15%,45%,15%,25%", frame="all", options="header"]

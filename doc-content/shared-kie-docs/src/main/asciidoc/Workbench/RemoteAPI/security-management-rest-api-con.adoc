@@ -6,7 +6,7 @@
 With the Security Management REST API, you can perform the following actions:
 
 * Retrieve information about all groups, roles, users, and their granted permissions
-* Create, update, or delete groups, roles, and users
+* Create, update, or delete groups and users
 * Update granted permissions for groups, roles, and users
 * Retrieve information about groups and roles assigned to the users
 
