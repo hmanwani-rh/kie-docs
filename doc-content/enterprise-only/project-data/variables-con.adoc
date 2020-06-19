@@ -19,6 +19,44 @@ If the variable cannot be found directly in the element's context, the immediate
 If the variable cannot be found, a read access request returns `null` and a write access produces an error message, and the process continues its execution.
 Variables are searched for based on their ID.
 
+== Variable tags
+For greater control over variable behavior, you can tag process variables and local variables in the  BPMN process file. Tags are simple string values that you add as metadata to a specific variable.
+
+{PRODUCT} supports the following tags for process variables and local variables:
+
+* `internal`: Sets the variable as internal only for a process instance and hides the variable from the exposed REST model. For example, you can use this tag with intermediate variables that help hold some state during the execution of the process but are not part of the domain.
+* `required`: Sets the variable as a requirement in order to start a process instance. If a process instance starts without the required variable, {PRODUCT} generates a `VariableViolationException` error.
+* `readonly`: Indicates that the variable is for informational purposes only and can be set only once during process instance execution. If the value of a read-only variable is modified at any time, {PRODUCT} generates a `VariableViolationException` error.
+* `input`: Sets the variable as an input of the process and therefore is not exposed in the returned data model. As a result, the value of an input variable is not returned in response to REST requests.
+* `output`: Sets the variable as an output of the process and therefore is not expected for a process start and is included in the returned data model. As a result, the value of an output variable is returned in response to REST requests.
+* `business-relevant`: Indicates that the variable is relevant for a particular item of business value. This tag is helpful for monitoring purposes or for implying that the variable is relevant to another application.
+* `tracked`: Sets a variable to be tracked for changes so that {PRODUCT} generates events anytime the value of this variable is changed.
+
+You can add the tag directly in the BPMN process source file as a `customTags` metadata property with the tag value defined in the format `![CDATA[__TAG_NAME__]]`.
+
+For example, the following BPMN process applies the `required` tag to an `approver` process variable:
+
+.Example variable tagged in the BPMN modeler
+image::BPMN2/bpmn-variable-tags-ui.png[Image of variable tags in BPMN modeler]
+
+.Example variable tagged in a BPMN file
+[source,xml]
+----
+<bpmn2:property id="approver" itemSubjectRef="ItemDefinition_9" name="approver">
+  <bpmn2:extensionElements>
+    <tns:metaData name="customTags">
+      <tns:metaValue><![CDATA[required]]></tns:metaValue>
+    </tns:metaData>
+  </bpmn2:extensionElements>
+</bpmn2:property>
+----
+
+You can use multiple tags for a variable where applicable, but use caution and ensure that the tags are logical and do not conflict. For example, avoid tagging a variable as both `internal` and `required`.
+
+By default, if a process variable has no tag assigned to it, {PRODUCT} assigns an `input` and an `output` tag to it.
+
+You can also define custom variable tags in your BPMN files to make variable data available to {PRODUCT} process event listeners. Custom tags do not influence the {PRODUCT} runtime as the standard variable tags do and are for informational purposes only. You define custom variable tags in the same `customTags` metadata property format that you use for standard {PRODUCT} variable tags.
+
 == Defining global variables
 Global variables exist in a knowledge session and can be accessed and are shared by all assets in that session. They belong to the particular session of the Knowledge Base and they are used to pass information to the engine. Every global variable defines its ID and item subject reference. The ID serves as the variable name and must be unique within the process definition. The item subject reference defines the data type the variable stores.
 
