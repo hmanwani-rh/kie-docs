@@ -35,7 +35,6 @@ include::{jbpm-dir}/BPMN2/create-user-task-proc.adoc[leveloffset=+3]
 include::{jbpm-dir}/BPMN2/create-service-task-proc.adoc[leveloffset=+3]
 
 include::{jbpm-dir}/BPMN2/copy-process-proc.adoc[leveloffset=+2]
-include::{jbpm-dir}/BPMN2/start-process-specific-node-proc.adoc[leveloffset=+2]
 include::{jbpm-dir}/BPMN2/resize-elements-proc.adoc[leveloffset=+2]
 include::{enterprise-dir}/processes/generate-process-docs-proc.adoc[leveloffset=+2]
 
