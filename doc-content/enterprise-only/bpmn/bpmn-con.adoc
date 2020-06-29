@@ -45,15 +45,13 @@ A process is defined or determined by its process definition. It exists in a kno
 | Enter the date when the service level agreement (SLA) expires.
 
 | *Process Variables*
-a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable *Tags* provide greater control over the variable behavior, such as whether the variable is `required` or `internal`. For more information about variable tags, see
+a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable *Tags* provide greater control over the variable behavior, such as whether the variable is `required` or `readonly`. For more information about variable tags, see
 ifdef::PAM[]
 {URL_DESIGNING_BUSINESS_PROCESSES}#variables-con_designing-business-processes[_{DESIGNING_BUSINESS_PROCESSES}_].
 endif::[]
 
 | *Metadata Attributes*
 | Add any custom metadata attribute name and value that you want to use for custom event listeners, such as a listener to implement some action when a metadata attribute is present.
-
-You can also use this field to configure role-based access to the process. To configure role-based access, set the attribute *Name* to `securityRoles` and set the attribute value to the relevant group or groups defined for the process, such as `employees,managers`.
 
 | *Global Variables*
 |  Add any global variables for the process. Global variables are visible to all process instances and assets in a project. Global variables are typically used by business rules and constraints, and are created dynamically by the rules or constraints.
