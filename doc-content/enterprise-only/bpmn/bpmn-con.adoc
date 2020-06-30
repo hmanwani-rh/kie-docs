@@ -2,7 +2,7 @@
 = Business Process Modeling and Notation Version 2.0
 The Business Process Modeling and Notation Version 2.0 (BPMN2) specification is an Object Management Group (OMG) specification that defines standards for graphically representing a business process, defines execution semantics for the elements, and provides process definitions in XML format.
 
-A process is defined or determined by its process definition. It exists in a knowledge base and is identified by its ID or other properties.
+A process is defined or determined by its process definition. It exists in a knowledge base and is identified by its ID.
 
 --
 .General process properties
@@ -33,19 +33,19 @@ A process is defined or determined by its process definition. It exists in a kno
 | Select this option if this process is an ad hoc subprocess. (Currently not supported.)
 
 | *Process Instance Description*
-| Enter a description of the process purpose.
+| Enter a description of the purpose of the process.
 
 | *Imports*
-| Click to open the *Imports* window and add any data object classes required for your process.
+| Click to open the *Imports* window and add any data type classes required for your process.
 
 | *Executable*
-| Select this option to make the process executable as part of your {PRODUCT} project.
+| Select this option to make the process executable part of your {PRODUCT} project.
 
 | *SLA Due Date*
-| Enter the date when the service level agreement (SLA) expires.
+| Enter the service level agreement (SLA) expiration date.
 
 | *Process Variables*
-a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable *Tags* provide greater control over the variable behavior, such as whether the variable is `required` or `readonly`. For more information about variable tags, see
+a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable tags provide greater control over variable behavior, for example whether the variable is `required` or `readonly`. For more information about variable tags, see
 ifdef::PAM[]
 {URL_DESIGNING_BUSINESS_PROCESSES}#variables-con_designing-business-processes[_{DESIGNING_BUSINESS_PROCESSES}_].
 endif::[]
@@ -58,4 +58,4 @@ endif::[]
 |===
 --
 
-A process is a container for a set of modeling elements. It contains elements that specify the execution workflow of a business process or its parts using flow objects and flows. Each process has its own BPMN2 diagram. {PRODUCT} contains the new process designer for creating BPMN2 diagrams and the legacy process designer to open the old BPMN2 diagram with `.bpmn2` extension. The new process designer has an improved layout and feature set and continues to develop. By default, the new diagrams are created in the new process designer. However, the old process designer is used to upload a file with `.bpmn2` extension.
+A process is a container for a set of modeling elements. It contains elements that specify the execution workflow of a business process or its parts using flow objects and flows. Each process has its own BPMN2 diagram. {PRODUCT} contains the new process designer for creating BPMN2 diagrams and the legacy process designer to open the old BPMN2 diagram with `.bpmn2` extension. The new process designer has an improved layout and feature set and continues to develop. By default, the new diagrams are created in the new process designer.
