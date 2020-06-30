@@ -13,7 +13,7 @@ For greater control over variable behavior, you can tag process variables and lo
 
 ** `VariableGuardProcessEventListener`
 +
-[source]
+[source,java]
 ----
 public VariableGuardProcessEventListener(String requiredRole, IdentityProvider identityProvider) {
     this("restricted", requiredRole, identityProvider);
@@ -22,7 +22,7 @@ public VariableGuardProcessEventListener(String requiredRole, IdentityProvider i
 
 ** `VariableGuardProcessEventListener`
 +
-[source]
+[source,java]
 ----
 public VariableGuardProcessEventListener(String tag, String requiredRole, IdentityProvider identityProvider) {
     this.tag = tag;

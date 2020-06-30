@@ -1,5 +1,5 @@
 [id='proc-define-local-variables_{context}']
-== Defining local variables
+= Defining local variables
 
 Local variables are available within their process element, such as an activity. They are initialized when the element context is initialized, that is, when the execution workflow enters the node and execution of the `onEntry` action has finished, if applicable. They are destroyed when the element context is destroyed, that is, when the execution workflow leaves the element.
 

@@ -1,5 +1,5 @@
 [id='proc-define-process-variables_{context}']
-== Defining process variables
+= Defining process variables
 
 Process variables are defined as properties in the BPMN2 definition file and are visible within the process instance. They are initialized at process creation and destroyed on process completion.
 
