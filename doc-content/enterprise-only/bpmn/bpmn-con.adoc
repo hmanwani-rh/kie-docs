@@ -18,10 +18,10 @@ A process is defined or determined by its process definition. It exists in a kno
 | Describes the process. The text in this field is included in the process documentation, if applicable.
 
 | *ID*
-| Enter an identifier for this process, such as `orderItems`.
+| Enter an identifier for this process, for example `orderItems`.
 
 | *Package*
-| Enter the package location for this process in your {PRODUCT} project, such as `org.acme`.
+| Enter the package location for this process in your {PRODUCT} project, for example `org.acme`.
 
 | *ProcessType*
 | Specify whether the process is public or private (or null, if not applicable).
@@ -45,7 +45,7 @@ A process is defined or determined by its process definition. It exists in a kno
 | Enter the service level agreement (SLA) expiration date.
 
 | *Process Variables*
-a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable tags provide greater control over variable behavior, for example whether the variable is `required` or `readonly`. For more information about variable tags, see
+a| Add any process variables for the process. Process variables are visible within the specific process instance. Process variables are initialized at process creation and destroyed on process completion. Variable tags provide greater control over variable behavior, for example whether the variable is tagged as `required` or `readonly`. For more information about variable tags, see
 ifdef::PAM[]
 {URL_DESIGNING_BUSINESS_PROCESSES}#variables-con_designing-business-processes[_{DESIGNING_BUSINESS_PROCESSES}_].
 endif::[]
@@ -54,7 +54,7 @@ endif::[]
 | Add any custom metadata attribute name and value that you want to use for custom event listeners, such as a listener to implement some action when a metadata attribute is present.
 
 | *Global Variables*
-|  Add any global variables for the process. Global variables are visible to all process instances and assets in a project. Global variables are typically used by business rules and constraints, and are created dynamically by the rules or constraints.
+|  Add any global variables for the process. Global variables are visible to all process instances and assets in a project. Global variables are typically used by business rules and constraints and are created dynamically by the rules or constraints.
 |===
 --
 
