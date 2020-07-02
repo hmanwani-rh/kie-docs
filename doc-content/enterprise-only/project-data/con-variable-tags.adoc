@@ -41,7 +41,7 @@ ksession.addEventListener(new VariableGuardProcessEventListener("AdminRole", myI
 ----
 
 +
-In the above example, the `VariableGuardProcessEventListener` method verifies if a variable is tagged with a security constraint tag (`restricted`). If the user role is not required, then {PRODUCT} generates a `VariableViolationException` error.
+In the above example, the `VariableGuardProcessEventListener` method verifies if a variable is tagged with a security constraint tag (`restricted`). If the user does not have the required role, then {PRODUCT} generates a `VariableViolationException` error.
 
 NOTE: The variable tags that appear in the {CENTRAL} UI, for example `internal`, `input`, `output`, `business-relevant`, and `tracked` are not supported in {PRODUCT}.
 
@@ -64,4 +64,4 @@ image::BPMN2/bpmn-variable-tags-ui.png[Image of variable tags in BPMN modeler]
 </bpmn2:property>
 ----
 
-You can use more than one tag for a variable where applicable.You can also define custom variable tags in your BPMN files to make variable data available to {PRODUCT} process event listeners. Custom tags do not influence the {PRODUCT} runtime as the standard variable tags do and are for informational purposes only. You define custom variable tags in the same `customTags` metadata property format that you use for standard {PRODUCT} variable tags.
+You can use more than one tag for a variable where applicable. You can also define custom variable tags in your BPMN files to make variable data available to {PRODUCT} process event listeners. Custom tags do not influence the {PRODUCT} runtime as the standard variable tags do and are for informational purposes only. You define custom variable tags in the same `customTags` metadata property format that you use for standard {PRODUCT} variable tags.

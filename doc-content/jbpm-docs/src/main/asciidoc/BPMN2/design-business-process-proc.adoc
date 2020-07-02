@@ -57,7 +57,7 @@ endif::[]
 | Enter the artifact version for the process.
 
 | *Ad hoc*
-| Select this option if this process is an ad hoc subprocess. (Currently not supported.)
+| Select this option if this process is an ad hoc subprocess.
 
 | *Process Instance Description*
 | Enter a description of the purpose of the process.
