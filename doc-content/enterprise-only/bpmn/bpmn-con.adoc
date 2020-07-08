@@ -24,13 +24,13 @@ A process is defined or determined by its process definition. It exists in a kno
 | Enter the package location for this process in your {PRODUCT} project, for example `org.acme`.
 
 | *ProcessType*
-| Specify whether the process is public or private (or null, if not applicable).
+| Specify whether the process is public or private. (Currently not supported.)
 
 | *Version*
 | Enter the artifact version for the process.
 
 | *Ad hoc*
-| Select this option if this process is an ad hoc subprocess. (Currently not supported.)
+| Select this option if this process is an ad hoc subprocess.
 
 | *Process Instance Description*
 | Enter a description of the purpose of the process.
