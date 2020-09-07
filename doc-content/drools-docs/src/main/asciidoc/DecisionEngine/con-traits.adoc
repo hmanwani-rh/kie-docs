@@ -1,9 +1,9 @@
 [id='con-traits_{context}']
 
 = Traits in the {DECISION_ENGINE}
-Traits in the {DECISION_ENGINE} allow you to model multiple dynamic types that do not fit in a class hierarchy. A trait is an interface that you can apply (and eventually remove) to an individual object at runtime. However, traits are not supported in the executable rule model, therefore traits and its specific implementation code are moved to an individual module named `drools-traits`. To use traits, you can import the `drools-traits` module to Maven.
+Traits in {DECISION_ENGINE} allow you to model multiple dynamic types that do not fit in a class hierarchy. A trait is an interface that you can apply (and eventually remove) to an individual object at runtime. However, traits are not supported in the executable rule model, therefore traits functionality and its specific implementation code is moved to an individual module named `drools-traits`. To use traits, you can import the `drools-traits` module to Maven.
 
-The `drools-traits` module is based on the `drools-core` and `drools-compiler` module. The classes from `drools-core` and `drools-compiler` are moved to the `drools-traits` module, containing `.traits` prefix in package name and `-Impl` suffix in class name to avoid the split problem.
+The `drools-traits` module is based on the `drools-core` and `drools-compiler` module. The classes from `drools-core` and `drools-compiler` are moved to the `drools-traits` module, containing `.traits` prefix in package name and `-Impl` suffix in class name to avoid the split package problem.
 
 NOTE: A class or an interface that is used specifically by traits is moved to the `drools-traits` module.
 
@@ -17,9 +17,9 @@ org.drools.core.reteoo.KieComponentFactoryFactory=org.drools.traits.core.reteoo.
 org.drools.compiler.builder.impl.TypeDeclarationBuilderFactory=org.drools.traits.compiler.builder.impl.TraitTypeDeclarationBuilderFactory
 ----
 
-To use traits, you must instantiate the specific traits classes using the service loader mechanism. For example, the `kie.conf` file in the `drools-traits` module supports the execution of traits related tests that are available in the `drools-core` and `drools-compiler` module:
+To use traits, you must instantiate the specific traits classes using the service loader mechanism. For example, the `kie.conf` file in `drools-traits` module supports the execution of traits related tests that are available in the `drools-core` and `drools-compiler` module:
 
-.Example `kie.conf`
+.Example objects in`kie.conf`
 
 [source]
 ----
@@ -31,9 +31,9 @@ org.kie.api.persistence.jpa.KieStoreServices = org.drools.persistence.jpa.Knowle
 
 IMPORTANT: Persistence related tests are moved to the `drools-traits` module. Therefore, the `kie.conf` file contains `KieStoreServices` defined for persistence.
 
-The `drools-core` module delegates the instance creation to the factory classes, for example, the constructor of `org.drools.core.reteoo.AlphaNode` cannot be called directly, instead use `org.drools.core.reteoo.builder.PhreakNodeFactory`. Also, `AlphaNode.java` contains traits specific code, which you can remove. For example, you can remove the code in `calculateDeclaredMask`.
+The `drools-core` module delegates the instance creation to the factory classes, for example, the constructor of `org.drools.core.reteoo.AlphaNode` object cannot be called directly, instead use `org.drools.core.reteoo.builder.PhreakNodeFactory` object. Also, `AlphaNode.java` contains traits specific code, which you can remove for example, you can remove the code in `calculateDeclaredMask`.
 
-When you implement `org.drools.core.reteoo.builder.PhreakNodeFactory => org.drools.traits.core.reteoo.TraitPhreakNodeFactory` differently, then you can create the instances of `org.drools.traits.core.reteoo.TraitAlphaNode` and move the specific traits code to the `drools-traits` module.
+When you implement `org.drools.core.reteoo.builder.PhreakNodeFactory` (changed as `org.drools.traits.core.reteoo.TraitPhreakNodeFactory`) differently, then you can create the instances of `org.drools.traits.core.reteoo.TraitAlphaNode` object and move the related traits code to the `drools-traits` module.
 
 [source,java]
 ----
@@ -78,21 +78,19 @@ public class TraitAlphaNode extends AlphaNode {
 }
 ----
 
-`org.drools.core.reteoo.KieComponentFactory` object creates the factories, and it is instantiated directly in `org.drools.core.RuleBaseConfiguration`. You can add the `org.drools.core.reteoo.KieComponentFactory` object in the `kie.conf` file if it is not stateful. However, a new instance needs to be created once in the `init` method in `org.drools.core.RuleBaseConfiguration`.
+The `KieComponentFactory` object creates the factories, and it is instantiated directly in `org.drools.core.RuleBaseConfiguration`. You can add the `KieComponentFactory` object in the `kie.conf` file if it is not stateful. However, a new instance must be created once in the `init` method in `org.drools.core.RuleBaseConfiguration`.
 
-When you add `KieComponentFactory` in the service loader, then a single `KieComponentFactory` is created for each class loader.
-
-To add a different `org.drools.core.reteoo.KieComponentFactory`, create a `org.drools.core.reteoo.KieComponentFactoryFactory` that you can add in the `kie.conf` file, for example:
+When you add `KieComponentFactory` object in the service loader, then a single `KieComponentFactory` object is created for each class loader. To add a different `KieComponentFactory` object, create a `org.drools.core.reteoo.KieComponentFactoryFactory` object that you can add in the `kie.conf` file, for example:
 
 [source]
 ----
 org.drools.core.reteoo.KieComponentFactoryFactory=org.drools.traits.core.reteoo.TraitKieComponentFactoryFactory
 ----
 
-In case the `org.drools.traits.core.reteoo.TraitKieComponentFactoryFactory` object is missing, then by default `org.drools.core.reteoo.KieComponentFactory` object is created. `TraitKieComponentFactoryFactory` creates the `TraitKieComponentFactory` component, which stores the required traits related code.
+In case the `TraitKieComponentFactoryFactory` object is missing, then `KieComponentFactory` object is created by default. `TraitKieComponentFactoryFactory` creates the `TraitKieComponentFactory` component, which stores the required traits related code.
 
 Other subclass objects examples:
 
-* `org.drools.core.common.NamedEntryPoint => org.drools.traits.core.common.TraitNamedEntryPoint`
+* `org.drools.core.common.NamedEntryPoint` changed as `org.drools.traits.core.common.TraitNamedEntryPoint` in `drools-traits` module
 
-* `org.drools.core.common.DefaultFactHandle => org.drools.traits.core.common.TraitDefaultFactHandle`
+* `org.drools.core.common.DefaultFactHandle` changed as `org.drools.traits.core.common.TraitDefaultFactHandle` in `drools-traits` module
