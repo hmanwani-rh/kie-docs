@@ -17,4 +17,7 @@ h| Description
 | Text annotation
 | Provides additional textual information for the BPMN2 diagram.
 
+| Data object
+| Displays the data flowing through a process in the BPMN2 diagram.
+
 |===

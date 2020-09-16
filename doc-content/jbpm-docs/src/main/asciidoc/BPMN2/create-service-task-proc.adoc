@@ -20,7 +20,7 @@ A service task is a task that is part of the process that is executed outside of
 |Description
 
 | *Name*
-| The name of the service task.
+| The name of the service task. You can also double-click the shape to edit the name of the service task. 
 
 | *Documentation*
 | Enter a description of the task. The text in this field is included in the process documentation. Click the *Documentation* tab in the upper-left side of the process designer canvas to view the process documentation.
