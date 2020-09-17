@@ -1,9 +1,7 @@
 [id='create-service-task-proc']
 
 = Creating service tasks
-A service task is a task that is part of the process that is executed outside of the process, but is not a human task. Examples of service tasks include sending an email and logging a message when these tasks are performed by systems. You can define the parameters (input) and results (output) that are associated with a service task. A Service Task should have one incoming connection and one outgoing connection.
-
-
+A service task is a task that executes an action based on a web service call or in a Java class method. Examples of service tasks include sending an email and logging a message when these tasks are performed by systems. You can define the parameters (input) and results (output) that are associated with a service task. A Service Task should have one incoming connection and one outgoing connection.
 
 .Procedure
 . Create a business process.
@@ -20,19 +18,19 @@ A service task is a task that is part of the process that is executed outside of
 |Description
 
 | *Name*
-| The name of the service task. You can also double-click the shape to edit the name of the service task. 
+| The name of the service task. You can also double-click the shape to edit the name of the service task.
 
 | *Documentation*
 | Enter a description of the task. The text in this field is included in the process documentation. Click the *Documentation* tab in the upper-left side of the process designer canvas to view the process documentation.
 
 | *Implementation*
-| Specify whether the task is implemented in Java or is a web service
+| Specify whether the task is implemented in Java or is a web service.
 
 | *Interface*
-| The class used to implement the script, for example `org.xyz.HelloWorld`.
+| The class used to implement the script. For example, `org.xyz.HelloWorld` in Java or `CountriesPortService` for web service.
 
 | *Operation*
-| The method that will be called by the interface, for example `sayHello()`.
+| The method that will be called by the interface. For example, `sayHello()` in Java or `getCountry` for web service.
 
 | *Assignments*
 | Click to add local variables.
@@ -46,12 +44,29 @@ A service task is a task that is part of the process that is executed outside of
 | *Is Multiple Instance*
 | Select if this task has multiple instances.
 
+| *MI Execution mode*
+| Select if the multiple instances execute in parallel or sequentially.
+
+| *MI Collection input*
+| Specify a variable that represents a collection of elements for which new instances are created. For example, `InputCollection` in Java or `inputCountryNames` for web service.
+
+| *MI Data Input*
+| Specify the input data assignment that is transferred to a Java class or web service, for example `Parameter`.
+
+| *MI Collection output*
+| The array list in which values returned from the Java or web service task is stored. For example, `OutputCollection` in Java or `outputCountries` for web service.
+
+| *MI Data Output*
+| Specify the output data assignment for Java or web service task, which stores the result of class execution on the server, for example `Result`.
+
+| *MI Completion Condition (mvel)*
+| Specify the MVEL expression that is evaluated on each completed instance to check if the specified multiple instance node can complete. For example, `OutputCollection.size() == 3` in Java indicates more than three people are not addressed.
+
 | *On Entry Action*
 | A Java, JavaScript, or MVEL script that specifies an action at the start of the task.
 
 | *On Exit Action*
 | A Java, JavaScript, or MVEL script that specifies an action at the end of the task.
-
 
 | *SLA Due Date*
 | The date that the service level agreement (SLA) expires.

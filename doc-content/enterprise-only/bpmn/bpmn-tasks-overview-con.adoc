@@ -38,6 +38,8 @@ In addition, the BPMN2 specification provides the ability to create custom tasks
 * DecisionTask: Used to execute a DMN diagram
 * Kafka work item: Used to send events to a Kafka topic
 
+For more information about enabling or disabling custom tasks in {CENTRAL}, see <<manage-service-tasks-proc_custom-tasks>>.
+
 .Business rule task
 A business rule task defines a way to make a decision either through a DMN model or a rule flow group.
 
@@ -57,7 +59,7 @@ image::BPMN2/bpmn-script-task.png[]
 
 The associated script can access process variables and global variables. Review the following list before using a script task:
 
-* Avoid low-level implementation details in the process. A script task can be used to manipulate variables, but consider using a service task when modelling more complex operations.
+* Avoid low-level implementation details in the process. A script task can be used to manipulate variables, but consider using a service task or a custom task when modelling more complex operations.
 * Ensure that the script is executed immediately, otherwise use an asynchronous service task.
 * Avoid contacting external services through a script task. Use a service task to model communication with an external service.
 * Ensure scripts do not throw exceptions. Runtime exceptions should be caught and managed, for example, inside the script or transformed into signals or errors that can then be handled inside the process.
