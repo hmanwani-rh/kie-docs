@@ -18,6 +18,7 @@ The `.jar` file contains data types (data objects) and Java classes for web serv
 . Save the project.
 +
 --
+.Example of creating web service task
 The default implementation of a service task in the BPMN2 specification is a web service. The web service support is based on the Apache CXF dynamic client, which provides a dedicated service task handler that implements the `WorkItemHandler` interface:
 
 `org.jbpm.process.workitem.bpmn2.ServiceTaskHandler`
@@ -42,7 +43,7 @@ The namespace must match `targetNamespace` from your WSDL file.
 .. Click a blank area of the process designer canvas.
 .. Add or define the task information listed in the following table as required.
 +
-.Web Service task parameters
+.Web service task parameters
 [cols="30%,70%", options="header"]
 |===
 |Label
@@ -105,6 +106,7 @@ The namespace must match `targetNamespace` from your WSDL file.
 
 |===
 
+.Example of creating Java service task
 When you create a service task using Java method, then the method can only contain one parameter and returns a single value. To create a service task using a Java method, you must add the Java class to the dependencies of the project:
 
 .. Create a business process.
@@ -114,7 +116,7 @@ When you create a service task using Java method, then the method can only conta
 .. If necessary, in the upper-right corner of the screen, click the *Properties* icon.
 .. Add or define the task information listed in the following table as required.
 +
-.Java Service task parameters
+.Java service task parameters
 [cols="30%,70%", options="header"]
 |===
 |Label
