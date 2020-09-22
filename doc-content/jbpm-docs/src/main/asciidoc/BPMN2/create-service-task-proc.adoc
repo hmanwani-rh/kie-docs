@@ -41,7 +41,7 @@ The namespace must match `targetNamespace` from your WSDL file.
 | Enter a description of the task. The text in this field is included in the process documentation. Click the *Documentation* tab in the upper-left side of the process designer canvas to view the process documentation.
 
 | *Implementation*
-| Specify whether the task is implemented in Java or is a web service.
+| Specify a web service.
 
 | *Interface*
 | The class used to implement the script, such as `CountriesPortService`.
@@ -122,7 +122,7 @@ When you create a service task using Java method, then the method can only conta
 | Enter a description of the task. The text in this field is included in the process documentation. Click the *Documentation* tab in the upper-left side of the process designer canvas to view the process documentation.
 
 | *Implementation*
-| Specify whether the task is implemented in Java or is a web service.
+| Specify the task is implemented in Java.
 
 | *Interface*
 | The class used to implement the script, such as `org.xyz.HelloWorld`.
