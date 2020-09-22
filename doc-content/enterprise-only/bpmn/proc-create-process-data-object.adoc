@@ -4,6 +4,11 @@
 
 Data objects represent, for example, documents used in a process in physical and digital form. Data objects appear as a page with a folded top right corner. The following procedure is a generic overview of creating a data object.
 
+[NOTE]
+====
+In {PRODUCT} {PRODUCT_VERSION_LONG}, limited support for data objects is provided that excludes support for data inputs, data outputs, and associations.
+====
+
 .Procedure
 . Create a business process.
 . In the process designer, select the *Artifacts -> Data Object* from the tool palette.
@@ -18,7 +23,7 @@ Data objects represent, for example, documents used in a process in physical and
 |Description
 
 | *Name*
-| The name of the data object. You can also double-click the shape to edit the name of the data object. 
+| The name of the data object. You can also double-click the shape to edit the name of the data object.
 
 | *Type*
 | Select a type of the data object.
