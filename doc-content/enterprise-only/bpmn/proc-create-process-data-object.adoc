@@ -23,7 +23,7 @@ In {PRODUCT} {PRODUCT_VERSION_LONG}, limited support for data objects is provide
 |Description
 
 | *Name*
-| The name of the data object. You can also double-click the shape to edit the name of the data object.
+| The name of the data object. You can also double-click the data object shape to edit the name. 
 
 | *Type*
 | Select a type of the data object.

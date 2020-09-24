@@ -19,7 +19,7 @@ User tasks are used to include human actions as input to the business process.
 |Description
 
 | *Name*
-| The name of the user task. You can also double-click the shape to edit the name of the user task. 
+| The name of the user task. You can also double-click the user task shape to edit the name. 
 
 | *Documentation*
 | Enter a description of the task. The text in this field is included in the process documentation. Click the *Documentation* tab in the upper-left side of the process designer canvas to view the process documentation.

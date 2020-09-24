@@ -119,9 +119,9 @@ public class MyListener implements ProcessEventListener {
 +
 [NOTE]
 ====
-A task and event in {PRODUCT} expects one incoming and one outgoing flow. If you want to design a business process with multiple incoming and multiple outgoing flows, use gateways (recommended) or set the JVM system property `jbpm.enable.multi.con` to `true`.
+A task and event in {PRODUCT} expect one incoming and one outgoing flow. If you want to design a business process with multiple incoming and multiple outgoing flows, then consider redesigning the business process using gateways. Using gateways makes the logic apparent, which a sequence flow is executing. Therefore, gateways are considered as a best practice for multiple connections.
 
-When `jbpm.enable.multi.con` property is enabled for Java virtual machine (JVM), then ensure that the business process that JVM executes contains the similar system property as enabled otherwise, the process engine throws an exception.
+However, if it is a must to use multiple connections for a task or an event, then you must set the JVM (Java virtual machine) system property `jbpm.enable.multi.con` to `true`. When `jbpm.enable.multi.con` property is enabled for JVM, then ensure that the business process that JVM executes contains the similar system property as enabled otherwise, the process engine throws an exception.
 ====
 
 . After you add and define all components of the business process, click *Save* to save the completed business process.
