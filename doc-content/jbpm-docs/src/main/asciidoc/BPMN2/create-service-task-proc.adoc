@@ -135,7 +135,7 @@ When you create a service task using Java method, then the method can only conta
 | The class used to implement the script, such as `org.xyz.HelloWorld`.
 
 | *Operation*
-| The method that is called by the interface, such as sayHello().
+| The method that is called by the interface, such as `sayHello`.
 
 | *Assignments*
 | Click to add local variables.
