@@ -1,0 +1,117 @@
+[id='bpmn-fluent-api-con_{context}']
+= BPMN Process fluent API for {CENTRAL} processes
+
+{PRODUCT} provides a BPMN process fluent API that enables you to create business processes using factories. You can also manually validate the business process that you created using process fluent API. The process fluent API is defined in `org.kie.api.fluent` package.
+
+Therefore, instead of using BPMN2 XML standard, you can use the process fluent API to create business processes in a few lines of code.
+
+[[bpmn-fluent-api-examples-ref]]
+== Example requests with the BPMN process fluent API
+
+The following is an example of BPMN process fluent API requests for basic interactions with a business process,
+ifdef::DM,PAM[]
+download the *{PRODUCT} {PRODUCT_VERSION_LONG} Source Distribution* from the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Red Hat Customer Portal] and navigate to `~/{PRODUCT_FILE}-sources/src/droolsjbpm-knowledge-$VERSION/kie-api/src/main/java/org/kie/api/fluent`.
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+see the process fluent API source in https://github.com/kiegroup/droolsjbpm-knowledge/tree/master/kie-api/src/main/java/org/kie/api/fluent[GitHub].
+endif::[]
+
+Creating and interacting with {CENTRAL} business processes::
+Following is an example of a basic business process with a script task:
++
+--
+.Example request to create and interact with a {CENTRAL} business process
+[source,java,subs="attributes+"]
+----
+​import org.kie.api.KieServices;
+import org.kie.api.builder.KieFileSystem;
+import org.kie.api.builder.ReleaseId;
+import org.kie.api.io.Resource;
+import org.jbpm.ruleflow.core.RuleFlowProcessFactory;
+import org.jbpm.ruleflow.core.RuleFlowProcess;
+import org.jbpm.bpmn2.xml.XmlBPMNProcessDumper;
+
+...
+
+RuleFlowProcessFactory factory = RuleFlowProcessFactory.createProcess("org.jbpm.HelloWorld");
+
+factory
+  // Header
+  .name("HelloWorldProcess")
+  .version("1.0")
+  .packageName("org.jbpm")
+  // Nodes
+  .startNode(1).name("Start").done()
+  .actionNode(2).name("Action")
+  .action("java", "System.out.println(\"Hello World\");").done()
+  .endNode(3).name("End").done()
+  // Connections
+  .connection(1, 2)
+  .connection(2, 3);
+
+RuleFlowProcess process = factory.validate().getProcess();
+KieServices ks = KieServices.Factory.get();
+KieFileSystem kfs = ks.newKieFileSystem();
+Resource resource = ks.getResources().newByteArrayResource(
+  XmlBPMNProcessDumper.INSTANCE.dump(process).getBytes());
+
+resource.setSourcePath("helloworld.bpmn2");
+kfs.write(resource);
+ReleaseId releaseId = ks.newReleaseId("org.jbpm", "helloworld", "1.0");
+kfs.generateAndWritePomXML(releaseId);
+ks.newKieBuilder(kfs).buildAll();
+ks.newKieContainer(releaseId).newKieSession().startProcess("org.jbpm.HelloWorld");
+----
+--
++
+In this example, the static `createProcess()` method is called from the `RuleFlowProcessFactory` class. The `createProcess()` method creates a new process and returns the `RuleFlowProcessFactory` that is used to create the process.
++
+A business process consists of three components:
+
+* Header: The header section contains global elements such as the name of the process, imports, and variables.
++
+In the above example, the header contains the name and version of the process and the package name.
+
+* Nodes: The nodes section contains all the different nodes that are part of the process.
++
+In the above example, nodes are added to the current process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeFactory` that allows you to set the properties of that node. Once finish configuring that specific node, the `done()` method returns the current `RuleFlowProcessFactory` to add more nodes, if necessary.
+
+* Connections: The connections section links the nodes to create a flow chart.
++
+In the above example, once you add all the nodes, you must connect them by creating connections between them. You can call the method connection, which links the nodes.
+
+Finally, you can validate the generated process by calling the `validate()` method and retrieve the created `RuleFlowProcess` object.
+
+[[bpmn-fluent-api-execution-ref]]
+== Example requests to execute a business process
+
+Once you create a valid process definition instance, you can execute it using a combination of public and internal KIE APIs. To execute a process, create a `Resource`, which is used to create a `KieBase`. Using the `KieBase`, you can create a `KieSession` to execute the process.
+
+In the following example, `ProcessBuilderFactory.toBytes` (process) is used to create a `ByteArrayResource` (resource).
++
+--
+.Example request to execute a process
+[source,java,subs="attributes+"]
+----
+// Build resource from Process
+KieResources resources = ServiceRegistry.getInstance().get(KieResources.class);
+Resource res = resources
+                        .newByteArrayResource(factory.toBytes(process))
+                        ​.setSourcePath("/tmp/processFactory.bpmn2"); // source path or target path must be set to be added into kbase
+​// Build kie base from this resource using KIE API
+​KieServices ks = KieServices.Factory.get();
+​KieRepository kr = ks.getRepository();
+​KieFileSystem kfs = ks.newKieFileSystem();
+​kfs.write(res);
+​KieBuilder kb = ks.newKieBuilder(kfs);
+​kb.buildAll(); // kieModule is automatically deployed to KieRepository if successfully built.
+​KieContainer kContainer = ks.newKieContainer(kr.getDefaultReleaseId());
+​KieBase kbase = kContainer.getKieBase();
+​// Create kie session using KieBase
+​KieSessionConfiguration conf = ...;
+​Environment env = ....;
+​KieSession ksession = kbase.newKieSession(conf,env);
+​// execute process using same process Id that is used to obtain ProcessBuilder instance
+​ksession.startProcess(processId)
+----
+--
