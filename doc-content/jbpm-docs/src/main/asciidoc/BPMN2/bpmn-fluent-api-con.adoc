@@ -17,50 +17,36 @@ see the process fluent API source in https://github.com/kiegroup/droolsjbpm-know
 endif::[]
 
 Creating and interacting with {CENTRAL} business processes::
-Following is an example of a basic business process with a script task:
+Following is an example of a basic business process with a script task, an exception handler, and a variable:
 +
 --
 .Example request to create and interact with a {CENTRAL} business process
 [source,java,subs="attributes+"]
 ----
-​import org.kie.api.KieServices;
-import org.kie.api.builder.KieFileSystem;
-import org.kie.api.builder.ReleaseId;
-import org.kie.api.io.Resource;
-import org.jbpm.ruleflow.core.RuleFlowProcessFactory;
-import org.jbpm.ruleflow.core.RuleFlowProcess;
-import org.jbpm.bpmn2.xml.XmlBPMNProcessDumper;
-
-...
-
-RuleFlowProcessFactory factory = RuleFlowProcessFactory.createProcess("org.jbpm.HelloWorld");
-
-factory
-  // Header
-  .name("HelloWorldProcess")
-  .version("1.0")
-  .packageName("org.jbpm")
-  // Nodes
-  .startNode(1).name("Start").done()
-  .actionNode(2).name("Action")
-  .action("java", "System.out.println(\"Hello World\");").done()
-  .endNode(3).name("End").done()
-  // Connections
-  .connection(1, 2)
-  .connection(2, 3);
-
-RuleFlowProcess process = factory.validate().getProcess();
-KieServices ks = KieServices.Factory.get();
-KieFileSystem kfs = ks.newKieFileSystem();
-Resource resource = ks.getResources().newByteArrayResource(
-  XmlBPMNProcessDumper.INSTANCE.dump(process).getBytes());
-
-resource.setSourcePath("helloworld.bpmn2");
-kfs.write(resource);
-ReleaseId releaseId = ks.newReleaseId("org.jbpm", "helloworld", "1.0");
-kfs.generateAndWritePomXML(releaseId);
-ks.newKieBuilder(kfs).buildAll();
-ks.newKieContainer(releaseId).newKieSession().startProcess("org.jbpm.HelloWorld");
+Process process =
+                // Create process builder
+                factory.processBuilder(processId)
+                       // package and name
+                       .packageName("org.jbpm")
+                       .name("My process")
+                       // start node
+                       .startNode(1).name("Start").done()
+                       // Add variable of type string
+                       .variable(var("pepe", String.class))
+                       // Add exception handler
+                       .exceptionHandler(IllegalArgumentException.class, Dialect.JAVA, "System.out.println(\"Exception\");")
+                       // script node in Java language that prints "action"
+                       .actionNode(2).name("Action")
+                       .action(Dialect.JAVA,
+                               "System.out.println(\"Action\");").done()
+                       // end node
+                       .endNode(3).name("End").done()
+                       // connections
+                       .connection(1,
+                                   2)
+                       .connection(2,
+                                   3)
+                       .build();
 ----
 --
 +
@@ -80,7 +66,7 @@ In the above example, nodes are added to the current process by calling the `sta
 +
 In the above example, once you add all the nodes, you must connect them by creating connections between them. You can call the method connection, which links the nodes.
 
-Finally, you can validate the generated process by calling the `validate()` method and retrieve the created `RuleFlowProcess` object.
+Finally, you can validate the generated process by calling the `validate()` or `build()` method and retrieve the created `RuleFlowProcess` object.
 
 [[bpmn-fluent-api-execution-ref]]
 == Example requests to execute a business process
