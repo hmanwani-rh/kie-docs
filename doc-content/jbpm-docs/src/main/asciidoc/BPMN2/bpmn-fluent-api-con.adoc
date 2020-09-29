@@ -50,7 +50,7 @@ Process process =
 ----
 --
 +
-In this example, the static `createProcess()` method is called from the `RuleFlowProcessFactory` class. The `createProcess()` method creates a new process and returns the `RuleFlowProcessFactory` that is used to create the process.
+In this example, a `ProcessBuilderFactory` reference is obtained and then using `processBuilder(String processId)` method, a `ProcessBuilder` instance is created, which is associated with the given process Id. The `ProcessBuilder` instance enables you to build a definition of the created process using the fluent API.
 +
 A business process consists of three components:
 
@@ -60,13 +60,14 @@ In the above example, the header contains the name and version of the process an
 
 * Nodes: The nodes section contains all the different nodes that are part of the process.
 +
-In the above example, nodes are added to the current process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeFactory` that allows you to set the properties of that node. Once finish configuring that specific node, the `done()` method returns the current `RuleFlowProcessFactory` to add more nodes, if necessary.
+In the above example, nodes are added to the process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeBuilder` that allows you to set the properties of that node. Once finished configuring that specific node, the `done()` method returns the `NodeContainerBuilder` to add more nodes, if necessary.
 
 * Connections: The connections section links the nodes to create a flow chart.
 +
-In the above example, once you add all the nodes, you must connect them by creating connections between them. You can call the method connection, which links the nodes.
+In the above example, once you add all the nodes, you must connect them by creating connections between them. You can call the `connection()` method, which links the nodes.
 
-Finally, you can validate the generated process by calling the `validate()` or `build()` method and retrieve the created `RuleFlowProcess` object.
++
+Finally, you can call the `build()` method and obtain the generated process definition. The `build()` method also validates the process definition and throws an exception if the process definition is not valid.
 
 [[bpmn-fluent-api-execution-ref]]
 == Example requests to execute a business process
