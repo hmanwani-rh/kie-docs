@@ -1,14 +1,14 @@
 [id='bpmn-fluent-api-con_{context}']
 = BPMN Process fluent API for {CENTRAL} processes
 
-{PRODUCT} provides a BPMN process fluent API that enables you to create business processes using factories. You can also manually validate the business process that you created using process fluent API. The process fluent API is defined in `org.kie.api.fluent` package.
+{PRODUCT} provides a BPMN process fluent API that enables you to create business processes using factories. You can also manually validate the business process that you created using process fluent API. The process fluent API is defined in the `org.kie.api.fluent` package.
 
 Therefore, instead of using BPMN2 XML standard, you can use the process fluent API to create business processes in a few lines of code.
 
 [[bpmn-fluent-api-examples-ref]]
 == Example requests with the BPMN process fluent API
 
-The following is an example of BPMN process fluent API requests for basic interactions with a business process,
+The following is an example of BPMN process fluent API requests for basic interactions with a business process. For more examples,
 ifdef::DM,PAM[]
 download the *{PRODUCT} {PRODUCT_VERSION_LONG} Source Distribution* from the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Red Hat Customer Portal] and navigate to `~/{PRODUCT_FILE}-sources/src/droolsjbpm-knowledge-$VERSION/kie-api/src/main/java/org/kie/api/fluent`.
 endif::[]
@@ -17,7 +17,7 @@ see the process fluent API source in https://github.com/kiegroup/droolsjbpm-know
 endif::[]
 
 Creating and interacting with {CENTRAL} business processes::
-Following is an example of a basic business process with a script task, an exception handler, and a variable:
+The following example shows basic business process with a script task, an exception handler, and a variable:
 +
 --
 .Example request to create and interact with a {CENTRAL} business process
@@ -50,7 +50,7 @@ Process process =
 ----
 --
 +
-In this example, a `ProcessBuilderFactory` reference is obtained and then using `processBuilder(String processId)` method, a `ProcessBuilder` instance is created, which is associated with the given process Id. The `ProcessBuilder` instance enables you to build a definition of the created process using the fluent API.
+In this example, a `ProcessBuilderFactory` reference is obtained and then, using `processBuilder(String processId)` method, a `ProcessBuilder` instance is created, which is associated with the given process Id. The `ProcessBuilder` instance enables you to build a definition of the created process using the fluent API.
 +
 A business process consists of three components:
 
@@ -60,7 +60,7 @@ In the above example, the header contains the name and version of the process an
 
 * Nodes: The nodes section contains all the different nodes that are part of the process.
 +
-In the above example, nodes are added to the process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeBuilder` that allows you to set the properties of that node. Once finished configuring that specific node, the `done()` method returns the `NodeContainerBuilder` to add more nodes, if necessary.
+In the above example, nodes are added to the process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeBuilder` that allows you to set the properties of that node. After the code finishes configuring that specific node, the `done()` method returns the `NodeContainerBuilder` to add more nodes, if necessary.
 
 * Connections: The connections section links the nodes to create a flow chart.
 +
@@ -74,8 +74,7 @@ Finally, you can call the `build()` method and obtain the generated process defi
 
 Once you create a valid process definition instance, you can execute it using a combination of public and internal KIE APIs. To execute a process, create a `Resource`, which is used to create a `KieBase`. Using the `KieBase`, you can create a `KieSession` to execute the process.
 
-In the following example, `ProcessBuilderFactory.toBytes` (process) is used to create a `ByteArrayResource` (resource).
-+
+The following example uses `ProcessBuilderFactory.toBytes` process to create a `ByteArrayResource` resource.
 --
 .Example request to execute a process
 [source,java,subs="attributes+"]
