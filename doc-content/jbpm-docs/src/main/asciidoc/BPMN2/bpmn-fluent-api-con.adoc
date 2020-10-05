@@ -8,7 +8,7 @@ Therefore, instead of using BPMN2 XML standard, you can use the process fluent A
 [[bpmn-fluent-api-examples-ref]]
 == Example requests with the BPMN process fluent API
 
-The following is an example of BPMN process fluent API requests for basic interactions with a business process. For more examples,
+The following example includes BPMN process fluent API requests for basic interactions with a business process. For more examples,
 ifdef::DM,PAM[]
 download the *{PRODUCT} {PRODUCT_VERSION_LONG} Source Distribution* from the https://access.redhat.com/jbossnetwork/restricted/listSoftware.html[Red Hat Customer Portal] and navigate to `~/{PRODUCT_FILE}-sources/src/droolsjbpm-knowledge-$VERSION/kie-api/src/main/java/org/kie/api/fluent`.
 endif::[]
@@ -56,15 +56,15 @@ A business process consists of three components:
 
 * Header: The header section contains global elements such as the name of the process, imports, and variables.
 +
-In the above example, the header contains the name and version of the process and the package name.
+In the previous example, the header contains the name and version of the process and the package name.
 
 * Nodes: The nodes section contains all the different nodes that are part of the process.
 +
-In the above example, nodes are added to the process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeBuilder` that allows you to set the properties of that node. After the code finishes configuring that specific node, the `done()` method returns the `NodeContainerBuilder` to add more nodes, if necessary.
+In the previous example, nodes are added to the process by calling the `startNode()`, `actionNode()`, and `endNode()` methods. These methods return a specific `NodeBuilder` that allows you to set the properties of that node. After the code finishes configuring that specific node, the `done()` method returns the `NodeContainerBuilder` to add more nodes, if necessary.
 
 * Connections: The connections section links the nodes to create a flow chart.
 +
-In the above example, once you add all the nodes, you must connect them by creating connections between them. You can call the `connection()` method, which links the nodes.
+In the previous example, once you add all the nodes, you must connect them by creating connections between them. You can call the `connection()` method, which links the nodes.
 
 +
 Finally, you can call the `build()` method and obtain the generated process definition. The `build()` method also validates the process definition and throws an exception if the process definition is not valid.
