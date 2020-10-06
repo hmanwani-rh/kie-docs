@@ -27,7 +27,7 @@ include::{enterprise-dir}/bpmn/bpmn-tasks-overview-con.adoc[leveloffset=+2]
 include::{enterprise-dir}/bpmn/bpmn-subprocesses-ref.adoc[leveloffset=+2]
 include::{enterprise-dir}/bpmn/bpmn-gateways-ref.adoc[leveloffset=+2]
 include::{enterprise-dir}/bpmn/bpmn-connecting-ref.adoc[leveloffset=+2]
-include::{enterprise-dir}/bpmn/bpmn-lanes-ref.adoc[leveloffset=+2]
+include::{jbpm-dir}/BPMN2/bpmn-lanes-proc.adoc[leveloffset=+2]
 include::{jbpm-dir}/BPMN2/bpmn-artifacts-ref.adoc[leveloffset=+2]
 include::{jbpm-dir}/BPMN2/proc-create-process-data-object.adoc[leveloffset=+3]
 
