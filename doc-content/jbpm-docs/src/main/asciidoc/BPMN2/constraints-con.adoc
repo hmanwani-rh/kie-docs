@@ -28,12 +28,12 @@ return person.age > 20;
 person.age > 20
 ----
 
-* *Rule constraints*: Constraints that are defined in the form of DRL rule conditions. Rule constraints can access the data in the working memory, including global variables. However, these constraints cannot access the variables directly in a process but using a process instance. To retrieve the reference of the parent process instance, use the `processInstance` variable of the type `WorkflowProcessInstance`.
+* *Rule constraints*: Constraints that are defined in the form of DRL rule conditions. Rule constraints can access the data in the working memory, including global variables. However, rule constraints cannot access the variables directly in a process but using a process instance. To retrieve the reference of the parent process instance, use the `processInstance` variable of the type `WorkflowProcessInstance`.
 +
 NOTE: You can insert a process instance into the session and update it if necessary, for example, using Java code or an on-entry, on-exit, or explicit action in your process.
 
 +
-The following example shows a rule constraint searching for a person with the same name as the value of the `name` variable in the process.
+The following example shows a rule constraint, searching for a person with the same name as the value of the `name` variable in the process.
 +
 .Example rule constraint with process variable assignment
 +
