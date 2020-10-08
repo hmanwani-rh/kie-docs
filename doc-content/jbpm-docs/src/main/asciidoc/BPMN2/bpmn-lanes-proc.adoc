@@ -16,7 +16,7 @@ To change the default value of `Autoclaim` property of swimlanes in {CENTRAL}:
 
 . Go to project *Settings*.
 . Open *Deployment -> Environment entries*.
-. Set the following values in the given fields:
+. Enter the following values in the given fields:
 +
 * *Name* - `Autoclaim`
 * *Value* - `"false”`
