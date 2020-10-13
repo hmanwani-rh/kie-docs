@@ -141,7 +141,7 @@ print(person.name + '\n);
 System.out.println( person.name );
 ----
 
-//== Constraints
+//== Constraints (adding this section in modularized form in a different file)
 
 //Constraints can be used in various locations in your processes, for example in a diverging gateway.
 //jBPM supports two types of constraints:

@@ -21,12 +21,12 @@ The `JbpmJUnitBaseTestCase` performs as a base test case class, which is used fo
 |This method is annotated as `@Before`. It configures a data source and `EntityManagerFactory` and deletes the session ID of a singleton.
 
 |`tearDown`
-|This method is annotated as `@After`. It removes history, closes `EntityManagerFactory` and a data source, and disposes of `RuntimeManager` and `RuntimeEngines`.
+|This method is annotated as `@After`. It removes history, closes `EntityManagerFactory` and a data source, and disposes `RuntimeManager` and `RuntimeEngines`.
 
 |===
 --
 
-* Knowledge base and knowledge session management methods: To create a session, create `RuntimeManager` and `RuntimeEngine`. Use the following methods to create and dispose of `RuntimeManager`:
+* Knowledge base and knowledge session management methods: To create a session, create `RuntimeManager` and `RuntimeEngine`. Use the following methods to create and dispose `RuntimeManager`:
 +
 --
 .`RuntimeManager` and `RuntimeEngine` management methods
@@ -137,7 +137,7 @@ public class ProcessPersistenceTest extends JbpmJUnitBaseTestCase {
 
         ProcessInstance processInstance = ksession.startProcess("com.sample.bpmn.hello");
 
-        assertProcessInstanceCompleted(processInstance.getId(), ksession);
+        assertProcessInstanceNotActive(processInstance.getId(), ksession);
 
         assertNodeTriggered(processInstance.getId(), "StartProcess", "Hello", "EndProcess");
     }

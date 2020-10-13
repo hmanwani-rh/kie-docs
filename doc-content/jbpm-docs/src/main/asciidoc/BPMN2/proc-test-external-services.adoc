@@ -36,7 +36,7 @@ public void testProcess2() {
     assertEquals("you@mail.com", workItem.getParameter("To"));
 
     ksession.getWorkItemManager().abortWorkItem(workItem.getId());
-    assertProcessInstanceAborted(processInstance.getId(), ksession);
+    assertProcessInstanceNotActive(processInstance.getId(), ksession);
     assertNodeTriggered(processInstance.getId(), "Gateway", "Failed", "Error");
 
 }

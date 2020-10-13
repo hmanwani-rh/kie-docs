@@ -161,7 +161,7 @@ When you create a service task using Java method, then the method can only conta
 | Specify a variable that represents a collection of elements for which new instances are created, such as `InputCollection`.
 
 | *MI Data Input*
-a| Specify the input data assignment that is transferred to a Java class. For example, you can set the input data assignments as `Parameter` and `ParameterType`. `ParameterType` represents the type of `Parameter` and sends arguments to the execution of Java method.
+| Specify the input data assignment that is transferred to a Java class. For example, you can set the input data assignments as `Parameter` and `ParameterType`. `ParameterType` represents the type of `Parameter` and sends arguments to the execution of Java method.
 
 | *MI Collection output*
 | The array list in which values returned from the Java class is stored, such as `OutputCollection`.
