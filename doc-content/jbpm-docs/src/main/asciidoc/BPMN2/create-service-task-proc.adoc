@@ -20,8 +20,6 @@ The `.jar` file contains data types (data objects) and Java classes for web serv
 +
 * *Name* - `Service Task`
 * *Value* - `new org.jbpm.process.workitem.bpmn2.ServiceTaskHandler(ksession, classLoader)`
-+
-IMPORTANT: The value entered in the given field must be customized to the name of the service task handler that is available in the `.jar` file.
 
 . Save the project.
 +

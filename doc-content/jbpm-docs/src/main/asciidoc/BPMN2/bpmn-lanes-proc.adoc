@@ -1,9 +1,9 @@
 [id='bpmn-lanes-proc_{context}']
 = BPMN2 swimlanes in process designer
 
-Swimlanes are process elements that visually group tasks related to one group or user. You can use user tasks in combination with swimlanes to assign multiple user tasks to the same actor, due to `Autoclaim` property of the swimlanes. When the first task in a swimlane is created with a specified actorId, then the same actorId is also assigned to all other tasks of that swimlane. The `Autoclaim` property enables the auto-assignment of the tasks that are related to a swimlane.
+Swimlanes are process elements that visually group tasks related to one group or user. You can use user tasks in combination with swimlanes to assign multiple user tasks to the same actor, due to `Autoclaim` property of the swimlanes. When a potential owner of a group claims the first task in a swimlane, then other tasks are directly assigned to the same owner. Therefore, the claim for other tasks is not needed by the remaining owners of the group. The `Autoclaim` property enables the auto-assignment of the tasks that are related to a swimlane.
 
-NOTE: The assignment of actorId works when there is a single actor specified. However, if actorId contains multiple values, then the user tasks are not assigned automatically.
+NOTE: If the remaining user tasks in a swimlane contain multiple predefined `ActorIds`, then the user tasks are not assigned automatically.
 
 In the following example, an analyst lane consists of two user tasks:
 image:BPMN2/swimlane.png[]
