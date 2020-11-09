@@ -67,7 +67,7 @@ In the BPMN modeler, you can configure the following general properties for a se
 |Defines a Java, JavaScript, or MVEL script that directs an action at the end of the task.
 
 |*SLA Due Date*
-|Specifies the date when the service level agreement (SLA) expires.
+|Specifies the duration (string type) when the service level agreement (SLA) expires. You can specify the duration in days, minutes, seconds, and milliseconds. For example, `1m` value in *SLA due date* field indicates one minute. 
 
 |*Assignments*
 |Defines data input and output for the task.
@@ -83,13 +83,22 @@ To use the rest custom task, you can set the URL, HTTP method, and credentials i
 
 You can click *Assignments* in the *Properties* panel to open the *REST Data I/O* window and add data input and output as required. For example, enter the following data inputs in *Data Inputs and Assignments* fields which are required to execute a rest custom task:
 
-* *ConnectTimeout*: Connection timeout (in seconds). The default value is 60 seconds.
+* *Url*: Endpoint URL for the REST service. This attribute is mandatory.
+* *Method*: Method of the endpoint called, such as `GET`, and `POST`. The default value is `GET`.
+* *ContentType*: Data type when sending data. This attribute is mandatory for `POST` and `PUT` requests.
+* *ContentTypeCharset*: Character set for the `ContentType`.
+* *Content*: Data you want to send. This attribute is mandatory for `POST` and `PUT` requests.
 * *ContentData*: Data you want to send. This attribute is mandatory for `POST` and `PUT` requests.
-* *Method*: Method of the endpoint called, such as `GET`, and `POST`.
-* *Password*: Password for Authentication.
+* *ConnectTimeout*: Connection timeout (in seconds). The default value is 60 seconds.
 * *ReadTimeout*: Timeout (in seconds) on response. The default value is 60 seconds.
-* *Url*: Endpoint URL for the REST service.
-* *Username*: User name for Authentication.
+* *Username*: User name for authentication.
+* *Password*: Password for authentication.
+* *AuthUrl*: URL that is handling authentication.
+* *AuthType*: Type of URL that is handling authentication.
+* *HandleResponseErrors* (Optional): Instructs handler to throw errors in case of an unsuccessful response codes (except 2XX).
+* *ResultClass*: Valid name of the class consists of the transformed response if the given string format is not returned.
+* *AcceptHeader*: Value of the accept header.
+* *AcceptCharset*: Character set of the accept header.
 * *Headers*: Headers to pass for REST call, such as `content-type=text/html`.
 
 You can add the following data output in *Data Outputs and Assignments* to store the output of the task execution:
@@ -109,6 +118,12 @@ You can click *Assignments* in the *Properties* panel to open the *Email Data I/
 * *From*: Email address of the sender.
 * *Subject*: Subject of the email.
 * *To*: Email address of the recipient. You can specify multiple email addresses separated by semicolon (;).
+* *Template* (Optional): Template to generate body of the email. The `Template` attribute overrides the `Body` parameter, if entered.
+* *Reply-To*: Email address to which reply message is sent.
+* *Cc*: Email address of the copied recipient. You can specify multiple email addresses separated by semicolon (;).
+* *Bcc*:  Email address of the blind copied recipient. You can specify multiple email addresses separated by semicolon (;).
+* *Attachments*: Email attachment to send along with the email.
+* *Debug*: Email server to intercept and store all passing email traffic.
 
 .Log
 A log custom task is used to log a message from a process. When a business process reaches a log custom task, the message data is assigned to the data input property.
