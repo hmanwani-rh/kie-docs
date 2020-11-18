@@ -185,7 +185,7 @@ You can use decision tasks to make an operational decision in a process. Decisio
 You can click *Assignments* in the *Properties* panel to open the *Decision Task Data I/O* window. In the *Decision Task Data I/O* window, you can configure the data input as required. For example, to execute a decision task, enter the following data inputs in *Data Inputs and Assignments* fields:
 
 * *Decision*: Decision for a process to make.
-* *Language*: Language of the DMN model, defaults to DMN.
+* *Language*: Language of the decision task, defaults to DMN.
 * *Model*: Name of the DMN model.
 * *Namespace*: Namespace of the DMN model.
 
@@ -198,7 +198,7 @@ You can use business rule tasks to evaluate key business rules in a business pro
 
 * *KieSessionName*: Name of the KIE session.
 * *KieSessionType*: Type of the KIE session.
-* *Language*: Language of the business rule, defaults to DRL.
+* *Language*: Language of the business rule task, defaults to DRL.
 
 .KafkaPublishMessages
 A Kafka work item is used to send events to a Kafka topic. This custom task includes a work item handler, which uses the Kafka producer to send messages to a specific Kafka server topic. For example, `KafkaPublishMessages` task publishes messages from a process to a Kafka topic.
