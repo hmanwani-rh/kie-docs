@@ -18,35 +18,35 @@ System.out.println(person.name);
 
 You can also use action scripts to view information about process instances. For example, use the following commands to:
 
-* Return the ID of a process instance
+* Return the ID of a process instance:
 +
 [source]
 ----
 System.out.println(kcontext.getProcessInstance().getId());
 ----
 
-* Return the parent process instance ID if a process instance has a parent
+* Return the parent process instance ID if a process instance has a parent:
 +
 [source]
 ----
 System.out.println(kcontext.getProcessInstance().getParentProcessInstanceId());
 ----
 
-* Return the ID of a process definition related to a process instance
+* Return the ID of a process definition related to a process instance:
 +
 [source]
 ----
 System.out.println(kcontext.getProcessInstance().getProcessId());
 ----
 
-* Return the name of a process definition related to a process instance
+* Return the name of a process definition related to a process instance:
 +
 [source]
 ----
 System.out.println(kcontext.getProcessInstance().getProcessName());
 ----
 
-* Return the state of a process instance
+* Return the state of a process instance:
 +
 [source]
 ----
