@@ -16,7 +16,7 @@ org.jbpm.executor.commands.LogCleanupCommand
 
 . To use the parameters, complete the following steps:
 +
-For full parameters list, see xref:clean-log-proc_designing_business_processes[]:
+For full parameters list, see xref:clean-log-proc[].
 +
 .. Open the *Advanced* tab.
 .. Click *Add Parameter*.
