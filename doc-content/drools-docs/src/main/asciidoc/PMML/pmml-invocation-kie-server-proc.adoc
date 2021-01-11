@@ -60,13 +60,13 @@ The `<version>` is the Maven artifact version for {PRODUCT} currently used in yo
 ifdef::DM,PAM[]
 [IMPORTANT]
 ====
-The legacy `kie-pmml` dependency is deprecated with {PRODUCT} 7.10.0 and will be removed in a future {PRODUCT} release.
+The legacy `kie-pmml` dependency is deprecated with {PRODUCT} 7.10.0 and will be replaced by `kie-pmml-trusty` dependency in a future {PRODUCT} release.
 ====
 endif::[]
 ifdef::DROOLS,JBPM,OP[]
 [IMPORTANT]
 ====
-The legacy `kie-pmml` dependency is deprecated with {PRODUCT} 7.48.0 and will be removed in a future {PRODUCT} release.
+The legacy `kie-pmml` dependency is deprecated with {PRODUCT} 7.48.0 and will be replaced by `kie-pmml-trusty` dependency in a future {PRODUCT} release.
 ====
 endif::[]
 
