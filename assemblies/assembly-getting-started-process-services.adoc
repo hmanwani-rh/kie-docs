@@ -27,6 +27,8 @@ include::{shared-dir}/Install/con-BPMN-DMN-modelers.adoc[leveloffset=+1]
 include::{shared-dir}/Install/proc-vscode-extension.adoc[leveloffset=+2]
 include::{shared-dir}/Install/proc-standalone-editors.adoc[leveloffset=+2]
 
+include::{shared-dir}/Install/proc-dmn-bpmn-maven-create.adoc[leveloffset=+1]
+
 include::{enterprise-dir}/getting-started/new-project-proc.adoc[leveloffset=+1]
 
 include::{enterprise-dir}/getting-started/creating-users-proc.adoc[leveloffset=+1]

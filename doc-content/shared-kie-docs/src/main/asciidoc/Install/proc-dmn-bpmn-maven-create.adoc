@@ -1,0 +1,51 @@
+[id="proc-dmn-bpmn-maven-create_{context}"]
+= Creating and executing DMN and BPMN models using Maven
+
+You can use Maven archetypes to develop DMN and BPMN models and integrate the archetypes with your {PRODUCT} decision and process services. This method of developing DMN and BPMN models is helpful for building new business applications using the {PRODUCT} VSCode extension.
+
+.Procedure
+. In a command terminal, navigate to a local folder where you want to store the new {PRODUCT} project.
+. Enter the following command to generate a project within a defined folder using the default Maven archetype:
++
+ifdef::PAM,DM[]
+.Generating a project using Maven archetype
+[source]
+----
+mvn archetype:generate \
+    -DarchetypeGroupId=org.kie \
+    -DarchetypeArtifactId=kie-kjar-archetype \
+    -DarchetypeVersion={rhpam.version}-SNAPSHOT
+----
+endif::PAM,DM[]
+
+ifdef::DROOLS,JBPM,OP[]
+.Generating a project using Maven archetype
+[source]
+----
+mvn archetype:generate \
+    -DarchetypeGroupId=org.kie \
+    -DarchetypeArtifactId=kie-kjar-archetype \
+    -DarchetypeVersion={drools.version}-SNAPSHOT
+----
+endif::DROOLS,JBPM,OP[]
+
++
+This command generates a Maven project and imports the {PRODUCT} VSCode extension for all required dependencies and configurations to prepare your application for business automation.
++
+If you want to create more than one project, then add `-DgroupId=<groupid> -DartifactId=<artifactId>` to the previous command.
+
+. Open or import the project in your VSCode IDE to edit existing assets or create new assets.
+. After you create and save the assets in your Maven archetype, navigate to the Maven project directory in the command line and run the following command to build your files:
++
+.Building Maven project
+[source]
+----
+mvn clean install
+----
++
+If the build fails, address any problems described in the command line error messages and try again to validate the files until the build is successful.
++
+After the build is successful, compile the Maven project as a knowledge JAR (KJAR) and deploy the artifacts on a running {KIE_SERVER} using the REST API.
+ifdef::DM,PAM[]
+For more information about using REST API, see {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
+endif::DM,PAM[]
