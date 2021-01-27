@@ -3,7 +3,7 @@
 
 {PRODUCT} provides a *Red Hat Business Automation Bundle* VSCode extension that enables you to design Decision Model and Notation (DMN) decision models, Business Process Model and Notation (BPMN) 2.0 business processes, and test scenarios directly in VSCode. {PRODUCT} also provides individual *DMN Editor* and *BPMN Editor* VSCode extensions for DMN or BPMN support only, if needed.
 
-IMPORTANT: The VSCode extension is a client-side editor that is partially compatible with the {CENTRAL} features. The features such as importing projects from {CENTRAL} are not supported in the VSCode. If you want to use such features in the VSCode, you can raise a request for a required feature. 
+IMPORTANT: The editors in the VSCode extension are only partially compatible with the editors in the {CENTRAL}, and several {CENTRAL} features are not supported. The VSCode extension is recommended for building new projects.
 
 .Prerequisites
 * https://code.visualstudio.com/[VSCode] 1.46.0 or later is installed.
@@ -20,3 +20,13 @@ After you install the VSCode extension bundle, any `.dmn`, `.bpmn`, or `.bpmn2` 
 If the DMN, BPMN, or test scenario modelers open only the XML source of a DMN, BPMN, or test scenario file and displays an error message, review the reported errors and the model file to ensure that all elements are correctly defined.
 
 NOTE: For new DMN or BPMN models, you can also enter `dmn.new` or `bpmn.new` in a web browser to design your DMN or BPMN model in the online modeler. When you finish creating your model, you can click *Download* in the online modeler page to import your DMN or BPMN file into your {PRODUCT} project in VSCode.
+
+Before you can begin developing BPMN and DMN models in VSCode, you need to create a Maven project where you can build your assets and any other related resources for your application. To generate a Maven project using the default Maven archetype, navigate to a local folder and enter the following command in the command terminal:
+
+[source]
+----
+mvn archetype:generate \
+    -DarchetypeGroupId=org.kie \
+    -DarchetypeArtifactId=kie-kjar-archetype \
+    -DarchetypeVersion=7.45.0-SNAPSHOT
+----
