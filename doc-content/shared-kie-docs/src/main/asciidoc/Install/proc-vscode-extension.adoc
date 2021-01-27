@@ -3,7 +3,7 @@
 
 {PRODUCT} provides a *Red Hat Business Automation Bundle* VSCode extension that enables you to design Decision Model and Notation (DMN) decision models, Business Process Model and Notation (BPMN) 2.0 business processes, and test scenarios directly in VSCode. VSCode is the preferred integrated development environment (IDE) for developing new business applications. {PRODUCT} also provides individual *DMN Editor* and *BPMN Editor* VSCode extensions for DMN or BPMN support only, if needed.
 
-IMPORTANT: The editors in the VSCode extension are only partially compatible with the editors in the {CENTRAL}, and several {CENTRAL} features are not supported. If you want to use such features in the VSCode, you can raise a request for a required feature.
+IMPORTANT: The editors in the VSCode are partially compatible with the editors in the {CENTRAL}, and several {CENTRAL} features are not supported in the VSCode.
 
 .Prerequisites
 * Latest stable version of https://code.visualstudio.com/[VSCode] is installed.

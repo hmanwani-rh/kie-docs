@@ -9,23 +9,23 @@ You can use Maven archetypes to develop DMN and BPMN models and integrate the ar
 +
 ifdef::PAM,DM[]
 .Generating a project using Maven archetype
-[source]
+[source,subs="attributes+"]
 ----
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={rhpam.version}-SNAPSHOT
+    -DarchetypeVersion={ENTERPRISE_VERSION_LONG}-SNAPSHOT
 ----
 endif::PAM,DM[]
 
 ifdef::DROOLS,JBPM,OP[]
 .Generating a project using Maven archetype
-[source]
+[source,subs="attributes+"]
 ----
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={drools.version}-SNAPSHOT
+    -DarchetypeVersion={COMMUNITY_VERSION_LONG}-SNAPSHOT
 ----
 endif::DROOLS,JBPM,OP[]
 
