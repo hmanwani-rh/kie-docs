@@ -1,7 +1,7 @@
 [id="proc-dmn-bpmn-maven-create_{context}"]
 = Creating and executing DMN and BPMN models using Maven
 
-You can use Maven archetypes to develop DMN and BPMN models and integrate the archetypes with your {PRODUCT} decision and process services. This method of developing DMN and BPMN models is helpful for building new business applications using the {PRODUCT} VSCode extension.
+You can use Maven archetypes to develop DMN and BPMN models in VSCode using the {PRODUCT} VSCode extension instead of {CENTRAL}. You can then integrate your archetypes with your {PRODUCT} decision and process services in {CENTRAL} as needed. This method of developing DMN and BPMN models is helpful for building new business applications using the {PRODUCT} VSCode extension.
 
 .Procedure
 . In a command terminal, navigate to a local folder where you want to store the new {PRODUCT} project.
