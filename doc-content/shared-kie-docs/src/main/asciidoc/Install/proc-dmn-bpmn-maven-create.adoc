@@ -24,18 +24,18 @@ If you want to generate multiple projects in the same directory, you can specify
 +
 . Before creating the first asset, set a package for your business application, for example, `org.kie.businessapp`, and create respective directories in the following paths:
 +
-* `PROJECT_ROOT/src/main/java`
-* `PROJECT_ROOT/src/main/resources`
-* `PROJECT_ROOT/src/test/resources`
+* `PROJECT_HOME/src/main/java`
+* `PROJECT_HOME/src/main/resources`
+* `PROJECT_HOME/src/test/resources`
 
 +
-For example, you can create `PROJECT_ROOT/src/main/java/org/kie/businessapp`.
+For example, you can create `PROJECT_HOME/src/main/java/org/kie/businessapp` for `org.kie.businessapp` package.
 
-. Use VSCode to create assets for your business application using the following ways:
+. Use VSCode to create assets for your business application. You can create the assets supported by {PRODUCT} VSCode extension using the following ways:
 +
-* To create a business process, create a new file with `.bpmn` or `.bpmn2` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `Process.bpmn`.
-* To create a DMN model, create a new file with `.dmn` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `AgeDecision.dmn`.
-* To create a test scenario simulation model, create a new file with `.scesim` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `TestAgeScenario.scesim`.
+* To create a business process, create a new file with `.bpmn` or `.bpmn2` in `PROJECT_HOME/src/main/java/org/kie/businessapp` directory, such as `Process.bpmn`.
+* To create a DMN model, create a new file with `.dmn` in `PROJECT_HOME/src/main/java/org/kie/businessapp` directory, such as `AgeDecision.dmn`.
+* To create a test scenario simulation model, create a new file with `.scesim` in `PROJECT_HOME/src/main/java/org/kie/businessapp` directory, such as `TestAgeScenario.scesim`.
 
 . After you create the assets in your Maven archetype, navigate to the root directory (contains `pom.xml`) of the project in the command line and run the following command to build the knowledge JAR (KJAR) of your project:
 +
@@ -44,8 +44,8 @@ For example, you can create `PROJECT_ROOT/src/main/java/org/kie/businessapp`.
 mvn clean install
 ----
 +
-If the build fails, address any problems described in the command line error messages and try again to validate the project until the build is successful. However, if the build is successful, you can find the artifact of your business application in `PROJECT_ROOT/target` directory.
+If the build fails, address any problems described in the command line error messages and try again to validate the project until the build is successful. However, if the build is successful, you can find the artifact of your business application in `PROJECT_HOME/target` directory.
 +
-NOTE: You must run `mvn clean install` command often to validate your project after each major change during development.
+NOTE: Use `mvn clean install` command often to validate your project after each major change during development.
 
 You can deploy the generated knowledge JAR (KJAR) of your business application on a running {KIE_SERVER} using the REST API. For more information about using REST API, see {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
