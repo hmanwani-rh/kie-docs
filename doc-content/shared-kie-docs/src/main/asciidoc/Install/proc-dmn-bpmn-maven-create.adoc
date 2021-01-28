@@ -7,28 +7,14 @@ You can use Maven archetypes to develop DMN and BPMN models in VSCode using the 
 . In a command terminal, navigate to a local folder where you want to store the new {PRODUCT} project.
 . Enter the following command to generate a project within a defined folder using the following Maven archetype:
 +
-ifdef::PAM,DM[]
 .Generating a project using Maven archetype
 [source,subs="attributes+"]
 ----
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={ENTERPRISE_VERSION_LONG}
+    -DarchetypeVersion={MAVEN_ARTIFACT_VERSION}
 ----
-endif::PAM,DM[]
-
-ifdef::DROOLS,JBPM,OP[]
-.Generating a project using Maven archetype
-[source,subs="attributes+"]
-----
-mvn archetype:generate \
-    -DarchetypeGroupId=org.kie \
-    -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={COMMUNITY_VERSION_LONG}
-----
-endif::DROOLS,JBPM,OP[]
-
 +
 This command generates a Maven project with required dependencies and generates required directories and files to build your business application. You can set up and use Git version-control system (recommended) when developing a project.
 +
@@ -36,24 +22,30 @@ If you want to generate multiple projects in the same directory, you can specify
 
 . In your VSCode IDE, click *File*, select *Open Folder*, and navigate to the folder that is generated using the previous command.
 +
-. Before creating the first asset, set a package for your business application, for example, `org.kie.businessapp`.
-. Create a Java object in `src/main/java/` directory, for example, `/src/main/java/org/kie/businessapp/DataObject.java`.
-. Create your business process or business rules in `src/main/resources` directory, for example, `/src/main/resources/org/kie/businessapp/Process.bpmn`.
+. Before creating the first asset, set a package for your business application, for example, `org.kie.businessapp`, and create respective directories in the following paths:
++
+* `PROJECT_ROOT/src/main/java`
+* `PROJECT_ROOT/src/main/resources`
+* `PROJECT_ROOT/src/test/resources`
 
 +
-You can use VSCode to create files and folders as per your requirement.
+For example, you can create `PROJECT_ROOT/src/main/java/org/kie/businessapp`.
 
-. After you create the assets in your Maven archetype, navigate to the project directory (contains `pom.xml`) in the command line and run the following command to build your files:
+. Use VSCode to create assets for your business application using the following ways:
 +
-.Building Maven project
+* To create a business process, create a new file with `.bpmn` or `.bpmn2` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `Process.bpmn`.
+* To create a DMN model, create a new file with `.dmn` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `AgeDecision.dmn`.
+* To create a test scenario simulation model, create a new file with `.scesim` in `PROJECT_ROOT/src/main/java/org/kie/businessapp` directory, such as `TestAgeScenario.scesim`.
+
+. After you create the assets in your Maven archetype, navigate to the root directory (contains `pom.xml`) of the project in the command line and run the following command to build the knowledge JAR (KJAR) of your project:
++
 [source]
 ----
 mvn clean install
 ----
 +
-If the build fails, address any problems described in the command line error messages and try again to validate the project until the build is successful.
+If the build fails, address any problems described in the command line error messages and try again to validate the project until the build is successful. However, if the build is successful, you can find the artifact of your business application in `PROJECT_ROOT/target` directory.
 +
-After the build is successful, you can deploy the generated knowledge JAR (KJAR) of your business application on a running {KIE_SERVER} using the REST API.
-ifdef::DM,PAM[]
-For more information about using REST API, see {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
-endif::DM,PAM[]
+NOTE: You must run `mvn clean install` command often to validate your project after each major change during development.
+
+You can deploy the generated knowledge JAR (KJAR) of your business application on a running {KIE_SERVER} using the REST API. For more information about using REST API, see {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
