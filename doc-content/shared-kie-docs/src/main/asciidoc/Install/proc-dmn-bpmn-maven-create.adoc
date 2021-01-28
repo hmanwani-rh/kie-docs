@@ -5,7 +5,7 @@ You can use Maven archetypes to develop DMN and BPMN models in VSCode using the 
 
 .Procedure
 . In a command terminal, navigate to a local folder where you want to store the new {PRODUCT} project.
-. Enter the following command to generate a project within a defined folder using the default Maven archetype:
+. Enter the following command to generate a project within a defined folder using the following Maven archetype:
 +
 ifdef::PAM,DM[]
 .Generating a project using Maven archetype
@@ -14,7 +14,7 @@ ifdef::PAM,DM[]
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={ENTERPRISE_VERSION_LONG}-SNAPSHOT
+    -DarchetypeVersion={ENTERPRISE_VERSION_LONG}
 ----
 endif::PAM,DM[]
 
@@ -25,17 +25,25 @@ ifdef::DROOLS,JBPM,OP[]
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={COMMUNITY_VERSION_LONG}-SNAPSHOT
+    -DarchetypeVersion={COMMUNITY_VERSION_LONG}
 ----
 endif::DROOLS,JBPM,OP[]
 
 +
-This command generates a Maven project and imports the {PRODUCT} VSCode extension for all required dependencies and configurations to prepare your application for business automation.
+This command generates a Maven project with required dependencies and generates required directories and files to build your business application. You can set up and use Git version-control system (recommended) when developing a project.
 +
-If you want to create more than one project, then add `-DgroupId=<groupid> -DartifactId=<artifactId>` to the previous command.
+If you want to generate multiple projects in the same directory, you can specify the `artifactId` and `groupId` of the generated business application by adding `-DgroupId=<groupid> -DartifactId=<artifactId>` to the previous command.
 
-. Open or import the project in your VSCode IDE to edit existing assets or create new assets.
-. After you create and save the assets in your Maven archetype, navigate to the Maven project directory in the command line and run the following command to build your files:
+. In your VSCode IDE, click *File*, select *Open Folder*, and navigate to the folder that is generated using the previous command.
++
+. Before creating the first asset, set a package for your business application, for example, `org.kie.businessapp`.
+. Create a Java object in `src/main/java/` directory, for example, `/src/main/java/org/kie/businessapp/DataObject.java`.
+. Create your business process or business rules in `src/main/resources` directory, for example, `/src/main/resources/org/kie/businessapp/Process.bpmn`.
+
++
+You can use VSCode to create files and folders as per your requirement.
+
+. After you create the assets in your Maven archetype, navigate to the project directory (contains `pom.xml`) in the command line and run the following command to build your files:
 +
 .Building Maven project
 [source]
@@ -43,9 +51,9 @@ If you want to create more than one project, then add `-DgroupId=<groupid> -Dart
 mvn clean install
 ----
 +
-If the build fails, address any problems described in the command line error messages and try again to validate the files until the build is successful.
+If the build fails, address any problems described in the command line error messages and try again to validate the project until the build is successful.
 +
-After the build is successful, compile the Maven project as a knowledge JAR (KJAR) and deploy the artifacts on a running {KIE_SERVER} using the REST API.
+After the build is successful, you can deploy the generated knowledge JAR (KJAR) of your business application on a running {KIE_SERVER} using the REST API.
 ifdef::DM,PAM[]
 For more information about using REST API, see {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
 endif::DM,PAM[]
