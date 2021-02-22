@@ -141,7 +141,7 @@ Changes the password of a specified user.
 .Example request command
 [source,subs="attributes+"]
 ----
-curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Accept-Language: en-US" -H "Content-Type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/changePassword" -d newpassword
+curl -u 'baAdmin:password@1' -H "Accept: application/json" -H "Content-Type: application/json" -X POST "http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/users/newUser/changePassword" -d newpassword
 ----
 
 .Example server response (JSON)
