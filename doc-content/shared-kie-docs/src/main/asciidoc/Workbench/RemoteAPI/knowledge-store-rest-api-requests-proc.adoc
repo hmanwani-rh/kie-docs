@@ -142,7 +142,7 @@ For curl utility:
 * `-u`: Enter the user name and password of the {CENTRAL} user with the `rest-all` role.
 * `-H`: Set the following headers:
 ** `Accept`: `application/json`
-** `Accept-Language`: `en-US`
+** `Accept-Language`: `en-US` (If not defined, the default locale from the JVM is reflected)
 ** `Content-Type`: `application/json`
 * `-X`: Set to `POST`.
 * *URL*: Enter the Knowledge Store REST API base URL and endpoint, such as `\http://localhost:8080/{URL_COMPONENT_CENTRAL}/rest/spaces/MySpace/projects`.
