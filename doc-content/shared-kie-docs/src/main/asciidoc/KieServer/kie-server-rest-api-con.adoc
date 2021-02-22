@@ -39,6 +39,8 @@ The {KIE_SERVER} REST API requires the following HTTP headers for API requests:
 * `Accept`: Data format accepted by your requesting client:
 ** `application/json` (JSON)
 ** `application/xml` (XML, for JAXB or XSTREAM)
+* `Accept-Language`: Data language accepted by your requesting client. If `Accept-Language` parameter is not defined, then the default locale from the JVM is reflected:
+** `en-US` (English US)
 * `Content-Type`: Data format of your `POST` or `PUT` API request data:
 ** `application/json` (JSON)
 ** `application/xml` (XML, for JAXB or XSTREAM)

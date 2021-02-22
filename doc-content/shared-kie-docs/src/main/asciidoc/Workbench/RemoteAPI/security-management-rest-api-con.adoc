@@ -37,6 +37,8 @@ The Security Management REST API requires the following HTTP headers for API req
 +
 * `Accept`: Data format accepted by your requesting client:
 ** `application/json` (JSON)
+* `Accept-Language`: Data language accepted by your requesting client. If `Accept-Language` parameter is not defined, then the default locale from the JVM is reflected:
+** `en-US` (English US)
 * `Content-Type`: Data format of your `POST` or `PUT` API request data:
 ** `application/json` (JSON)
 
@@ -45,6 +47,7 @@ The Security Management REST API supports the following HTTP methods for API req
 +
 * `GET`: Retrieves specified information from a specified resource endpoint
 * `POST`: Creates or updates a resource
+* `PUT`: Updates a resource
 * `DELETE`: Deletes a resource
 
 Base URL::
