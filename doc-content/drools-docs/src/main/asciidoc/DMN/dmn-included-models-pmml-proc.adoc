@@ -17,12 +17,12 @@ You cannot include PMML models from other projects in {CENTRAL}.
 <!-- Required for the PMML compiler -->
 <dependency>
   <groupId>org.drools</groupId>
-  <artifactId>kie-pmml</artifactId>
+  <artifactId>kie-pmml-trusty</artifactId>
   <version>${{PRODUCT_INIT}.version}</version>
   <scope>provided</scope>
 </dependency>
 
-<!-- Alternative dependencies for JPMML Evaluator, override `kie-pmml` dependency -->
+<!-- Alternative dependencies for JPMML Evaluator, override `kie-pmml` and `kie-pmml-trusty` dependency -->
 <dependency>
   <groupId>org.kie</groupId>
   <artifactId>kie-dmn-jpmml</artifactId>
@@ -45,7 +45,7 @@ You cannot include PMML models from other projects in {CENTRAL}.
 
 To access the project `pom.xml` file in {CENTRAL}, you can select any existing asset in the project and then in the *Project Explorer* menu on the left side of the screen, click the *Customize View* gear icon and select *Repository View* -> *pom.xml*.
 
-If you want to use the full PMML specification implementation with the Java Evaluator API for PMML (JPMML), use the alternative set of JPMML dependencies in your DMN project. If the JPMML dependencies and the standard `kie-pmml` dependency are both present, the `kie-pmml` dependency is disabled. For information about JPMML licensing terms, see https://openscoring.io/[Openscoring.io].
+If you want to use the full PMML specification implementation with the Java Evaluator API for PMML (JPMML), use the alternative set of JPMML dependencies in your DMN project. If the JPMML dependencies, the standard `kie-pmml`, and `kie-pmml-trusty` dependency are present, the `kie-pmml` and `kie-pmml-trusty` dependency are disabled. For information about JPMML licensing terms, see https://openscoring.io/[Openscoring.io].
 
 ifdef::DM,PAM[]
 [IMPORTANT]
