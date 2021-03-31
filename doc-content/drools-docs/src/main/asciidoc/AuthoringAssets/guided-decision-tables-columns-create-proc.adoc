@@ -27,9 +27,7 @@ image::Workbench/AuthoringAssets/guided-decision-tables-columns-add_1.png[View c
 +
 For descriptions of each column type and required parameters for setup, see xref:guided-decision-tables-columns-types-con[].
 +
-. Click *Finish* to add the configured column.
-
-In guided decision tables, you can double-click a column name to sort the values in ascending order, and if you double-click on the same column, the values are sorted in descending order. 
+. Click *Finish* to add the configured column. 
 
 After all columns are added, you can begin adding rows of rules correlating to your columns to complete the decision table. For details, see xref:guided-decision-tables-rows-create-proc[].
 
