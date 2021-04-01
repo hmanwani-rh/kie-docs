@@ -4,8 +4,8 @@
 You can sort the values in columns that you created in a guided decision table.
 
 .Prerequisites
-* You have created the required columns in a guided decision table.
+* You created the required columns in a guided decision table.
 
 .Procedure
 . Double-click a column header that you want to sort in ascending order.
-. To sort the values of the same column in descending order, double-click the column header again. 
+. To sort the values of the same column in descending order, double-click the column header again.
