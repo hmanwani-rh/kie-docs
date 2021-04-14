@@ -23,7 +23,7 @@ For more information about creating a user task in {CENTRAL}, see <<create-user-
 . Expand *Implementation/Execution* and click image:getting-started/btn_assign.png[] below to *Assignments*, to open the *Data I/O* window.
 . Add a data input with the name `AssignmentStrategy`, with the type `String`, and with the constant source, such as the strategy name.
 +
-Note that if you do not set `AssignmentStrategy` as a data input variable, then no assignment strategy is used for the task.
+Note that if `AssignmentStrategy` is set as null, then no assignment strategy is used for the task.
 
 . Click *Ok*.
 +
