@@ -1,14 +1,14 @@
 [id="ref-rest-api-dmn-endpoints_{context}"]
-= {KIE_SERVER} REST API endpoints for DMN models
+= REST endpoints for specific DMN models
+
+{PRODUCT} provides model-specific DMN KIE Server endpoints that you can use to interact with your specific DMN model without using the {CENTRAL} user interface.
 
 For each DMN model in a container in {PRODUCT}, the following REST endpoints of the {KIE_SERVER} are automatically generated based on the content of the DMN model:
 
-* `POST /server/containers/{containerId}/dmn`: A business-domain endpoint for evaluating decisions for a specified container
 * `POST /server/containers/{containerId}/dmn/models/{modelname}`: A business-domain endpoint for evaluating a specified DMN model in a container
 * `POST /server/containers/{containerId}/dmn/models/{modelname}/{decisionServiceName}`: A business-domain endpoint for evaluating a specified decision service component in a specific DMN model available in a container
 * `POST /server/containers/{containerId}/dmn/models/{modelname}/dmnresult`: An endpoint for evaluating a specified DMN model containing customized body payload and returning a `DMNResult` response, including business-domain context, helper messages, and helper decision pointers
 * `POST /server/containers/{containerId}/dmn/models/{modelname}/{decisionServiceName}/dmnresult`: An endpoint for evaluating a specified decision service component in a specific DMN model and returning a `DMNResult` response, including the business-domain context, helper messages, and help decision pointers for the decision service
-* `GET /server/containers/{containerId}/dmn`: An endpoint for retrieving DMN models for a specified container
 * `GET /server/containers/{containerId}/dmn/models/{modelname}`: An endpoint for returning standard DMN XML without decision logic and containing the inputs and decisions of the specified DMN model
 * `GET /server/containers/{containerId}/dmn/openapi.json (|.yaml)`: An endpoint for retrieving Swagger or OAS for the DMN models in a specified container
 
@@ -32,122 +32,8 @@ For each endpoint, use a REST client or curl utility to send requests with the f
 
 The examples in the following endpoints are based on a `mykjar-project` container that contains a `Traffic Violation` DMN model, containing a `TrafficViolationDecisionService` decision service component.
 
-For all of these endpoints, if a DMN evaluation `Error` message occurs, a `DMNResult` response is returned along with an HTTP 5xx error. If a DMN `Info` or `Warn` message occurs, the relevant response is returned along with the business-domain REST body, in the `X-{PRODUCT}-decision-messages` extended HTTP header, to be used for client-side business logic. When more refined client-side business logic is required, the client can use the `dmnresult` variant of the endpoints.
+For all of these endpoints, if a DMN evaluation `Error` message occurs, a `DMNResult` response is returned along with an HTTP 5xx error. If a DMN `Info` or `Warn` message occurs, the relevant response is returned along with the business-domain REST body, in the `X-Kogito-decision-messages` extended HTTP header, to be used for client-side business logic. When more refined client-side business logic is required, the client can use the `dmnresult` variant of the endpoints.
 
-Retrieve DMN model for a specified container::
-+
---
-`GET /server/containers/{containerId}/dmn`
-
-.Example REST endpoint
-`\http://localhost:8080/kie-server/services/rest/server/containers/mykjar-project/dmn`
-
-.Example curl request
-[source]
-----
-curl -u wbadmin:wbadmin -H "accept: application/xml" -X GET "http://localhost:8080/kie-server/services/rest/server/containers/mykjar-project/dmn"
-----
-
-.Example response (XML)
-[source,xml]
-----
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<response type="SUCCESS" msg="OK models successfully retrieved from container 'mykjar-project'">
-    <dmn-model-info-list>
-        <model>
-            <model-namespace>http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a</model-namespace>
-            <model-name>Traffic Violation</model-name>
-            <model-id>_99</model-id>
-            <decisions>
-                <dmn-decision-info>
-                    <decision-id>_3</decision-id>
-                    <decision-name>TrafficViolationDecisionService</decision-name>
-                </dmn-decision-info>
-            </decisions>
-        </model>
-    </dmn-model-info-list>
-</response>
-----
-
-.Example response (JSON)
-[source,json]
-----
-{
-  "type": "SUCCESS",
-  "msg": "OK models successfully retrieved from container 'mykjar-project'",
-  "result": {
-    "dmn-model-info-list": {
-      "models": [
-        {
-          "model-namespace": "http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a",
-          "model-name": "Traffic Violation",
-          "model-id": "_99",
-          "decisions": [
-            {
-              "decision-id": "_3",
-              "decision-name": "TrafficViolationDecisionService"
-            }
-          ]
-        }
-      ]
-    }
-  }
-}
-----
---
-
-Evaluate decisions for a specified container::
-+
---
-`POST /server/containers/{containerId}/dmn`
-
-.Example REST endpoint
-`\http://localhost:8080/kie-server/services/rest/server/containers/mykjar-project/dmn`
-
-.Example curl request
-[source]
-----
-curl -u wbadmin:wbadmin -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8080/kie-server/services/rest/server/containers/mykjar-project/dmn" -d "{ \"model-namespace\" : \"http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a\", \"model-name\" : \"Traffic Violation\", \"decision-name\" : [ ], \"decision-id\" : [ ], \"dmn-context\" : }"
-----
-
-.Example POST request body with input data
-[source,json]
-----
-{
-  "model-namespace" : "http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a",
-  "model-name" : "Traffic Violation",
-  "decision-name" : [ ],
-  "decision-id" : [ ],
-  "dmn-context" : [ ],
-}
-----
-
-.Example response (JSON)
-[source,json]
-----
-{
-  "type": "SUCCESS",
-  "msg": "OK from container 'mykjar-project'",
-  "result": {
-    "dmn-evaluation-result": {
-      "messages": [],
-      "model-namespace": "http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a",
-      "model-name": "Traffic Violation",
-      "decision-name": [],
-      "dmn-context": [],
-      "decision-results": {
-        "_3": {
-          "messages": [],
-          "decision-id": "_3",
-          "decision-name": "TrafficViolationDecisionService",
-          "status": "SUCCEEDED"
-        }
-      }
-    }
-  }
-}
-----
---
 
 Retrieve Swagger or OAS for DMN models in a specified container::
 +
@@ -367,6 +253,12 @@ Evaluate a specified decision service within a specified DMN model in a containe
 For this endpoint, the request body must contain all the requirements of the decision service. The response is the resulting DMN context of the decision service, including the decision values, the original input values, and all other parametric DRG components in serialized form. For example, a business knowledge model is available in string-serialized form in its signature.
 
 If the decision service is composed of a single-output decision, the response is the resulting value of that specific decision. This behavior provides an equivalent value at the API level of a specification feature when invoking the decision service in the model itself. As a result, you can, for example, interact with a DMN decision service from single-page web applications.
+
+.Example `TrafficViolationDecisionService` decision service with single-output decision
+image::dmn/dmn-model-traffic-violation-single-output.png[Image of decision service in Traffic Violation DMN model]
+
+.Example `TrafficViolationDecisionService` decision service with multiple-output decision
+image::dmn/dmn-model-traffic-violation-multi-output.png[Image of decision service in Traffic Violation DMN model]
 
 .Example REST endpoint
 `\http://localhost:8080/kie-server/services/rest/server/containers/mykjar-project/dmn/models/Traffic Violation/TrafficViolationDecisionService`
