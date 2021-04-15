@@ -2,7 +2,7 @@
 
 = Setting the user task assignment strategy
 
-The user task assignment strategy is used to automatically assign the tasks to a suitable user. The assignment strategy allows more efficient task allocation based on the associated properties, such as potential owners, task priority, and task data. The default user task assignment strategy in Red Hat Process Automation Manager is `org.jbpm.task.assignment.strategy`. You can also explicitly define an assignment strategy for a user task in {CENTRAL}.
+The user task assignment strategy is used to automatically assign the tasks to a suitable user. The assignment strategy allows more efficient task allocation based on the associated properties, such as potential owners, task priority, and task data. `org.jbpm.task.assignment.strategy` is the system property for the user task assignment strategy in {PRODUCT}. You can also explicitly define an assignment strategy for a user task in {CENTRAL}.
 
 .Prerequisites
 
@@ -23,7 +23,7 @@ For more information about creating a user task in {CENTRAL}, see <<create-user-
 . Expand *Implementation/Execution* and click image:getting-started/btn_assign.png[] below to *Assignments*, to open the *Data I/O* window.
 . Add a data input with the name `AssignmentStrategy`, with the type `String`, and with the constant source, such as the strategy name.
 +
-Note that if `AssignmentStrategy` is set as null, then no assignment strategy is used for the task.
+NOTE: If `AssignmentStrategy` is set as null, then no assignment strategy is used for the task.
 
 . Click *Ok*.
 +
