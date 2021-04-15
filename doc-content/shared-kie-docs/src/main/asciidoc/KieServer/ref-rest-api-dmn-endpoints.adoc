@@ -21,7 +21,7 @@ For each endpoint, use a REST client or curl utility to send requests with the f
 
 * *Base URL*: `http://__HOST__:__PORT__/kie-server/services/rest/`
 * *Path parameters*:
-** ``{containerId}`: The string identifier of the container, such as `mykjar-project`
+** `{containerId}`: The string identifier of the container, such as `mykjar-project`
 ** `{modelName}`: The string identifier of the DMN model, such as `Traffic Violation`
 ** `{decisionServiceName}`: The string identifier of the decision service component in the DMN DRG, such as `TrafficViolationDecisionService`
 ** `dmnresult`: The string identifier that enables the endpoint to return a full `DMNResult` response with more detailed `Info`, `Warn`, and `Error` messaging
@@ -32,8 +32,7 @@ For each endpoint, use a REST client or curl utility to send requests with the f
 
 The examples in the following endpoints are based on a `mykjar-project` container that contains a `Traffic Violation` DMN model, containing a `TrafficViolationDecisionService` decision service component.
 
-For all of these endpoints, if a DMN evaluation `Error` message occurs, a `DMNResult` response is returned along with an HTTP 5xx error. If a DMN `Info` or `Warn` message occurs, the relevant response is returned along with the business-domain REST body, in the `X-Kogito-decision-messages` extended HTTP header, to be used for client-side business logic. When more refined client-side business logic is required, the client can use the `dmnresult` variant of the endpoints.
-
+For all of these endpoints, if a DMN evaluation `Error` message occurs, a `DMNResult` response is returned along with an HTTP 5xx error. If a DMN `Info` or `Warn` message occurs, the relevant response is returned along with the business-domain REST body, in the `X-Kogito-decision-messages` extended HTTP header, to be used for client-side business logic. When there is a requirement of more refined client-side business logic, the client can use the `dmnresult` variant of the endpoints.
 
 Retrieve Swagger or OAS for DMN models in a specified container::
 +
