@@ -49,7 +49,7 @@ For example, set to `12h` for jobs to be executed every 12 hours. The schedule i
 
 |`RecordsPerTransaction`
 |Indicates the number of records in a transaction that is removed. The default value is `0`, indicating all the records.
-|Yes
+|No, it is used with other parameters.
 
 |`ForDeployment`
 |Specifies deployment ID of the logs that are removed.
