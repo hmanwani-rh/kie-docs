@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 :context: getting-started-kogito-microservices
 
 // Purpose statement for the assembly
-As a developer of decisions, you can use {KOGITO} business automation to build cloud-native applications that adapt to your business domain and tooling.
+As a business rules developer, you can use {KOGITO} business automation to build cloud-native applications that adapt to your business domain and tooling.
 
 .Prerequisites
 * JDK 11 or later is installed.

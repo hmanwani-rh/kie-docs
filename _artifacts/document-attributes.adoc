@@ -166,6 +166,7 @@ endif::OP[]
 :GETTING_STARTED_PLANNER: Getting started with {PLANNER}
 :CREATING_SPRING_BOOT_APPLICATIONS: Creating {PRODUCT} business applications with Spring Boot
 :PLANNER_WITH_SPRING_BOOT: Creating a school timetable using {PLANNER} with Spring Boot
+:GETTING_STARTED_KOGITO_MICROSERVICES: Getting started with {KOGITO} microservices in {PRODUCT}
 
 :DRL_RULES: Designing a decision service using DRL rules
 :GUIDED_DECISION_TABLES: Designing a decision service using guided decision tables
