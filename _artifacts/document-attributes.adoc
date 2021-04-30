@@ -104,6 +104,7 @@ endif::OP[]
 :JWS: Red Hat JBoss Web Server
 :JWS_VERSION: 5.4
 :JWS_VERSION_LONG: 5.4.0
+:KOGITO: Kogito
 :TOMCAT: Apache Tomcat
 :TOMCAT_VERSION: 9.0
 :OPENSHIFT: Red Hat OpenShift Container Platform
