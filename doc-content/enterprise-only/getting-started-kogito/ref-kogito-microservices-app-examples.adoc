@@ -1,5 +1,5 @@
 [id="ref-kogito-microservices-app-examples_{context}"]
-== Example applications with {KOGITO} microservices
+= Example applications with {KOGITO} microservices
 
 {KOGITO} microservices include example applications in the https://github.com/kiegroup/kogito-examples[`kogito-examples`] repository in GitHub. These example applications contain various types of services on Quarkus or Spring Boot to help you develop your own applications. The services use one or more Decision Model and Notation (DMN) decision models, Drools Rule Language (DRL) rule units, or Java classes to define the service logic.
 
