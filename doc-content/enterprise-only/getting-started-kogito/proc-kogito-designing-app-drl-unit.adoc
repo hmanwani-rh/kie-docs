@@ -24,9 +24,11 @@ rule isAdult
     modify($person) {
     	setAdult(true)
     };
-query persons
-  $p : /person[ adult ]
-end
+		end
+
+	query persons
+		$p : /person[ adult ]
+		end
 ----
 
 This example rule determines that any person who is older than 18 is classified as an adult. The rule file also declares that the rule belongs to the rule unit `PersonRules`. When you build the project, the rule unit is generated and associated with the DRL file.
@@ -50,8 +52,10 @@ rule isAdult
     modify($person) {
     	setAdult(true)
     };
-query persons
-	$p : /person[ adult ]
-end
+		end
+
+	query persons
+		$p : /person[ adult ]
+		end
 ----
 --
