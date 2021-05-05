@@ -5,6 +5,6 @@
 
 For example, {KOGITO} microservices are compatible with the following technologies:
 
-* *{OPENSHIFT}*, based on Kubernetes, is the target platform for building and managing containerized applications.
-* *Quarkus* is native Java stack for Kubernetes that you can use to build applications with {KOGITO} microservices.
-* *Spring Boot* is also supported with {KOGITO} so that you can use the Spring Framework with {PRODUCT}.
+* *{OPENSHIFT}* is based on Kubernetes, and is the target platform for building and managing containerized applications.
+* *Quarkus* is a native Java stack for Kubernetes that you can use to build applications, using the {KOGITO} microservices.
+* *Spring Boot* is an application framework that you can use to configure Spring Framework with {PRODUCT}.

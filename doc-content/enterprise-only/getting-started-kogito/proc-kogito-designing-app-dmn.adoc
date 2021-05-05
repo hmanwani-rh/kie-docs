@@ -7,6 +7,9 @@ The example for this procedure is a basic {KOGITO} microservice that provides a 
 
 The business decision contains the decision logic of the {PRODUCT} service. You can define business rules and decisions in different ways, such as with DMN models or DRL rules. The example for this procedure uses a DMN model.
 
+.Prerequisites
+* You have created a project. For more information about creating a Maven project, see xref:proc-kogito-creating-maven-project_{context}[].
+
 .Procedure
 . In the Maven project that you generated for your {PRODUCT} service, navigate to the `src/main/java/org/acme` folder and add the following `Person.java` file:
 +
@@ -167,11 +170,11 @@ To create this example DMN model quickly, you can copy the following `PersonDeci
 
 To create this example DMN model in VSCode using the DMN modeler, follow these steps:
 
-.. Open the empty `PersonDecisions.dmn` file and in the upper-right corner of the DMN modeler, click the *Properties* icon and confirm that the DMN model *Name* is set to `PersonDecisions`.
+.. Open the empty `PersonDecisions.dmn` file, click the *Properties* icon in the upper-right corner of the DMN modeler, and confirm that the DMN model *Name* is set to `PersonDecisions`.
 .. In the left palette, select *DMN Input Data*, drag the node to the canvas, and double-click the node to name it `Person`.
-.. In the left palette, select *DMN Decision*, drag the node to the canvas, double-click the node to name it `isAdult`, and link to it from the input node.
+.. In the left palette, drag the *DMN Decision* node to the canvas, double-click the node to name it `isAdult`, and link to it from the input node.
 .. Select the decision node to display the node options and click the *Edit* icon to open the DMN boxed expression editor to define the decision logic for the node.
-.. Click the undefined expression field and select *Decision Table*.
+.. Click the _undefined expression_ field and select *Decision Table*.
 .. Click the upper-left corner of the decision table to set the hit policy to *Unique*.
 .. Set the input and output columns so that the input source `Person.Age` with type `number` determines the age limit and the output target `isAdult` with type `boolean` determines adult status:
 +
