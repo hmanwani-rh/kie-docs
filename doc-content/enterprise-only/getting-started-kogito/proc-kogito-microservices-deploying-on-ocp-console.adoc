@@ -1,0 +1,100 @@
+[id="proc-kogito-microservices-deploying-on-ocp-console_{context}"]
+= Deploying {KOGITO} microservices on OpenShift using the OpenShift web console
+
+After you create your {KOGITO} microservices as part of a business application, you can use the {OPENSHIFT} web console to deploy your microservices. The {KOGITO} Operator page in the OpenShift web console guides you through the deployment process. The {KOGITO} Operator is based on the https://sdk.operatorframework.io/[Operator SDK] and automates many of the deployment steps for you. For example, when you give the operator a link to the Git repository that contains your application, the operator can automatically configure the components required to build your project from source and deploy the resulting microservices.
+
+.Prerequisites
+* The application with your {KOGITO} microservices is in a Git repository that is reachable from your OpenShift environment.
+* You have access to the OpenShift web console with `cluster-admin` permissions.
+* (Quarkus only) The `pom.xml` file of your project contains the following dependency for the https://quarkus.io/guides/microprofile-health[Quarkus `smallrye-health` extension]. This extension enables the https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes[liveness and readiness probes] that are required for Quarkus-based projects on OpenShift.
++
+.SmallRye Heath dependency for Quarkus applications on OpenShift
+[source,xml]
+----
+<dependency>
+  <groupId>io.quarkus</groupId>
+  <artifactId>quarkus-smallrye-health</artifactId>
+</dependency>
+----
+
+.Procedure
+. In the OpenShift web console, go to *Operators* -> *OperatorHub* in the left menu, search for and select *Kogito*, and follow the on-screen instructions to install the latest operator version.
+. After you install the {KOGITO} Operator, go to *Operators* -> *Installed Operators* and select *Kogito*.
+. In the operator page, select the *Kogito Build* tab and click *Create KogitoBuild* to create the {KOGITO} build definition.
+. In the application window, use the *Form View* or *YAML View* to configure the build definition.
++
+--
+At a minimum, define the application configurations shown in the following example YAML file:
+
+.Example YAML definition for an application with {KOGITO} build
+[source,yaml,subs="attributes+"]
+----
+apiVersion: app.kiegroup.org/v1beta1 # {KOGITO} API for this service
+kind: KogitoBuild  # Application type
+metadata:
+  name: example-quarkus  # Application name
+  namespace: kogito  # OpenShift project namespace
+spec:
+  type: RemoteSource
+  gitSource:
+    uri: 'https://github.com/kiegroup/kogito-examples'  # Git repository containing application (uses default branch)
+    contextDir: process-quarkus-example  # Git folder location of application
+----
+
+[NOTE]
+====
+If you configured an internal Maven repository, you can use it as a Maven mirror service and specify the Maven mirror URL in your {KOGITO} build definition to substantially shorten build time:
+
+[source,yaml]
+----
+spec:
+  mavenMirrorURL: http://nexus3-nexus.apps-crc.testing/repository/maven-public/
+----
+
+For more information about internal Maven repositories, see the https://maven.apache.org/guides/introduction/introduction-to-repositories.html[Apache Maven] documentation.
+====
+--
+. After you define your application data, click *Create* to generate the {KOGITO} build.
++
+Your application is listed in the *{KOGITO}Builds* page. You can select the application name to view or modify application settings and YAML details.
+
+. In the operator page, select the *Kogito Service* tab and click *Create KogitoRuntime* to create the {KOGITO} microservice definition.
+. In the application window, use the *Form View* or *YAML View* to configure the microservice definition.
++
+--
+At a minimum, define the application configurations shown in the following example YAML file:
+
+.Example YAML definition for an application with {KOGITO} microservices
+[source,yaml,subs="attributes+"]
+----
+apiVersion: app.kiegroup.org/v1beta1 # {KOGITO} API for this microservice
+kind: KogitoRuntime  # Application type
+metadata:
+  name: example-quarkus  # Application name
+  namespace: kogito  # OpenShift project namespace
+----
+
+--
+. After you define your application data, click *Create* to generate the {KOGITO} microservice.
++
+Your application is listed in the {KOGITO} microservice page. You can select the application name to view or modify application settings and YAML details.
+
+. In the left menu of the web console, go to *Builds* -> *Builds* to view the status of your application build.
++
+--
+You can select a specific build to view build details.
+
+[NOTE]
+====
+For every {KOGITO} service that you create for OpenShift deployment, two builds are generated and listed in the *Builds* page in the web console: a traditional runtime build and a Source-to-Image (S2I) build with the suffix `-builder`. The S2I mechanism builds the application in an OpenShift build and then passes the built application to the next OpenShift build to be packaged into the runtime container image. The {KOGITO} S2I build configuration also enables you to build the project directly from a Git repository on the OpenShift platform.
+====
+--
+. After the application build is complete, go to *Workloads* -> *Deployments* to view the application deployments, pod status, and other details.
++
+You can select the application name to increase or decrease the pod count or modify deployment settings.
+
+. After your {KOGITO} microservice is deployed, in the left menu of the web console, go to *Networking* -> *Routes* to view the access link to the deployed application.
++
+You can select the application name to view or modify route settings.
++
+With the application route, you can integrate your {KOGITO} microservices with your business automation solutions as needed.

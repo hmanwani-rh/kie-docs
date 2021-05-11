@@ -33,6 +33,12 @@ include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservice-runnin
 
 include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservice-interacting-app.adoc[leveloffset=+1]
 
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-openshift.adoc[leveloffset=+1]
+include::{enterprise-dir}/getting-started-kogito/con-kogito-microservices-on-ocp.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-ocp-console.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-ocp-kogito-cli.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/ref-kogito-microservice-deploy-troubleshooting.adoc[leveloffset=+2]
+
 == Additional resources
 * {URL_DEVELOPING_DECISION_SERVICES}#assembly-dmn-models[_{DMN_MODELS}_]
 * {URL_DEVELOPING_DECISION_SERVICES}#assembly-drl-rules[_{DRL_RULES}_]
