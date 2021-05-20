@@ -1,0 +1,29 @@
+[id="con-git-build-operator-deployment-option_{context}"]
+= Git source build and deployment
+In most use cases, you can use the standard runtime build and deployment method to deploy {KOGITO} microservices on OpenShift from a Git repository source, as shown in the following examples. These examples are based on the `kogito-travel-agency` extended example application.
+
+.Example {KOGITO} microservice deployment from existing namespace
+[source,subs="attributes+,+quotes"]
+----
+// Uses the provisioned namespace in your OpenShift cluster
+$ kogito use-project __PROJECT_NAME__
+
+// Deploys a new {KOGITO} microservice from a Git source
+$ kogito deploy-service travels https://github.com/kiegroup/kogito-examples/tree/stable/kogito-travel-agency/extended --context-dir travels
+----
+
+The operator uses the default branch in the specified Git repository, usually `master`.
+
+Alternatively, you can generate a new namespace in your cluster during deployment:
+
+.Example {KOGITO} microservice deployment from new namespace
+[source,subs="attributes+,+quotes"]
+----
+// Creates a new namespace in your cluster
+$ kogito new-project __NEW_PROJECT_NAME__
+
+// Deploys a new {KOGITO} microservice from a Git source
+$ kogito deploy-service travels https://github.com/kiegroup/kogito-examples/tree/stable/kogito-travel-agency/extended --context-dir travels
+----
+
+NOTE: If you are developing or testing your {KOGITO} microservice locally, you can use the binary build, custom image build, or file build option to build and deploy from a local source instead of from a Git repository.

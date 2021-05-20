@@ -1,0 +1,34 @@
+[id="con-custom-image-build-operator-deployment-option_{context}"]
+= Custom image build and deployment
+
+As an alternative for building and deploying your {KOGITO} microservices on OpenShift, you can use a custom {KOGITO} image build. In a custom image build, you build the application, copy the application to your project root, and build the {KOGITO} image. After building the {KOGITO} image, you push the built image to an OpenShift `BuildConfig` configuration to be packaged into the runtime container image.
+
+The following example creates a {KOGITO} microservice from a local directory, builds the project binaries, builds {KOGITO} image, and deploys the built image to OpenShift. This example is based on the `kogito-travel-agency` extended example application.
+
+.Example {KOGITO} microservice deployment from custom image build
+[source,subs="attributes+,+quotes"]
+----
+// Creates the {KOGITO} microservice
+$ cd ~/kogito-travel-agency/extended/travels
+$ kogito deploy-service travels
+
+// Builds the project and generates resources in `target` folder
+$ mvn clean package -DskipTests=true
+
+// Builds the {KOGITO} image
+$ docker build --tag quay.io/<yournamespace>/process-quarkus-example:latest -f quarkus-jvm.Dockerfile
+
+// Optionally, tests the built image
+$ docker run --rm -it -p 8080:8080 quay.io/<yournamespace>/process-quarkus-example:latest
+
+// Pushes the built {KOGITO} image
+$ docker push quay.io/<yournamespace>/process-quarkus-example:latest
+
+// Deploys to OpenShift
+$ oc start-build --from-dir=target/
+
+Uploading directory "target/" as input for the build ...
+....
+Uploading finished
+build.build.openshift.io/travels-1 started
+----

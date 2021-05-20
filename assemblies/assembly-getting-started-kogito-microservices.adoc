@@ -35,8 +35,16 @@ include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservice-intera
 
 include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-openshift.adoc[leveloffset=+1]
 include::{enterprise-dir}/getting-started-kogito/con-kogito-microservices-on-ocp.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/con-kogito-probes.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-enable-probes-quarkus.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-enable-probes-springboot.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/proc-kogito-set-custom-probes.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/con-kogito-operator-deployment-options.adoc[leveloffset=+2]
+include::{enterprise-dir}/getting-started-kogito/con-git-build-operator-deployment-option.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/con-binary-build-operator-deployment-option.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/con-custom-image-build-operator-deployment-option.adoc[leveloffset=+3]
+include::{enterprise-dir}/getting-started-kogito/con-file-build-operator-deployment-option.adoc[leveloffset=+3]
 include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-ocp-console.adoc[leveloffset=+2]
-include::{enterprise-dir}/getting-started-kogito/proc-kogito-microservices-deploying-on-ocp-kogito-cli.adoc[leveloffset=+2]
 include::{enterprise-dir}/getting-started-kogito/ref-kogito-microservice-deploy-troubleshooting.adoc[leveloffset=+2]
 
 == Additional resources

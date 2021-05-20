@@ -1,0 +1,36 @@
+[id="con-binary-build-operator-deployment-option_{context}"]
+= Binary build and deployment
+
+OpenShift builds can require extensive amounts of time. As a faster alternative for building and deploying your {KOGITO} microservices on OpenShift, you can use a binary build. In a binary build, you build the application locally and push the built application to an OpenShift `BuildConfig` configuration to be packaged into the runtime container image.
+
+The following example creates a {KOGITO} service from a local directory, builds the project binaries, and deploys the binary build to OpenShift. This example is based on the `kogito-travel-agency` extended example application.
+
+.Example {KOGITO} microservice deployment from binary build
+[source,subs="attributes+,+quotes"]
+----
+// Creates the {KOGITO} microservice
+$ cd ~/kogito-travel-agency/extended/travels
+$ kogito deploy-service travels
+
+// Builds the project and generates binary resources in `target` folder
+$ mvn clean package
+
+// Deploys to OpenShift using binary build
+$ oc start-build travels-binary --from-dir=target/
+
+Uploading directory "target/" as binary input for the build ...
+....
+Uploading finished
+build.build.openshift.io/travels-1 started
+----
+
+In this example, the following resources are generated in the `target` folder to prepare for the binary build:
+
+* `quarkus-app/app/travels.jar`: Standard JAR file that contains the classes and resources of the project.
+* `quarkus-app/quarkus`: Contains the generated resources required by the Quarkus application to run.
+* `quarkus-app/lib`: Directory that contains the project dependencies.
+* `quarkus-app/quarkus-run.jar`: Executable JAR file for the project. Note that `quarkus-run.jar` is not an uber-JAR file, and also requires the folders `quarkus-app/app`, `quarkus-app/quarkus`, and `quarkus-app/lib`.
+
+NOTE: The images are handling the binary build directly from the `target` folder, and the content of the `target/quarkus-app` folder is copied directly.
+
+After the binary build is complete, the result is pushed to the `travels` Image Stream that was created by the operator and triggers a new deployment.

@@ -1,0 +1,60 @@
+[id="con-file-build-operator-deployment-option_{context}"]
+= File build and deployment
+
+You can build and deploy your {KOGITO} microservices from a single file, such as a Decision Model and Notation (DMN), Drools Rule Language (DRL), or properties file, or from a directory with multiple files. You can specify a single file from your local file system path or specify a file directory from a local file system path only. When you upload the file or directory to an OpenShift cluster, a new Source-to-Image (S2I) build is automatically triggered.
+
+The following examples upload a single DMN file from a local directory to an OpenShift cluster for an S2I build. These examples are based on the `kogito-travel-agency` extended example application.
+
+.Example {KOGITO} microservice deployment from a local file
+[source,subs="attributes+,+quotes"]
+----
+$ kogito deploy-service travels /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/travels.dmn
+
+File found: /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/travels.dmn
+...
+The requested file(s) was successfully uploaded to OpenShift, a build with this file(s) should now be running. To see the logs, run 'oc logs -f bc/kogito-travel-agency-builder -n kogito'
+----
+
+As instructed in the terminal output, you can run the following command to see the build logs:
+
+.Example build log for DMN file build
+[source]
+----
+$ oc logs -f bc/kogito-travel-agency-builder -n kogito
+
+Receiving source from STDIN as file travels.dmn
+Using docker-registry.default.svc:5000/openshift/kogito-builder as the s2i builder image
+----
+
+The following examples upload multiple files within a local directory to an OpenShift cluster for an S2I build:
+
+.Example {KOGITO} microservice deployment from multiple files in a local directory
+[source,subs="attributes+,+quotes"]
+----
+$ kogito deploy-service travels /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels
+
+The provided source is a dir, packing files.
+File(s) found: [/tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/flightBooking.dmn /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/hotelBooking.dmn /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/travels.dmn].
+...
+The requested file(s) was successfully uploaded to OpenShift, a build with this file(s) should now be running. To see the logs, run 'oc logs -f bc/travels-builder -n kogito'
+----
+
+If you need to update an uploaded file or directory after you create the build, you can use the `oc start-build` command to re-upload the file or directory, as shown in the following example. An S2I build cannot identify only changed files in a directory, so you must re-upload the entire directory of files to update the build.
+
+.Example command to re-upload a single local file to update the S2I build
+----
+$ oc start-build kogito-travel-agency-builder --from-file tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels/travels.dmn
+----
+
+.Example command to re-upload multiple files from a local directory to update the S2I build
+----
+$ oc start-build kogito-travel-agency-builder --from-dir tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels
+----
+
+If a build fails, use the OpenShift environment variable https://docs.openshift.com/container-platform/4.3/builds/basic-build-operations.html#builds-basic-access-build-verbosity_basic-build-operations[`BUILD_LOGLEVEL`] with the desired level as part of your deployment command, as shown in the following example:
+
+.Example command to troubleshoot failed build from directory
+[source]
+----
+$ kogito --verbose deploy-service travels /tmp/kogito-examples/kogito-travel-agency/extended/travels/src/main/resources/org/acme/travels --build-env BUILD_LOGLEVEL=5
+----

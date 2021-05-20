@@ -1,0 +1,13 @@
+[id="con-kogito-operator-deployment-options_{context}"]
+= OpenShift deployment options with the {PRODUCT} {KOGITO} Operator
+
+The {PRODUCT} {KOGITO} Operator supports the following options for building and deploying {KOGITO} microservices on {OPENSHIFT}:
+
+* Git source build and deployment
+* Binary build and deployment
+* Custom image build and deployment
+* File build and deployment
+
+{PRODUCT} provides the relevant Source-to-Image (S2I) build configuration depending on the deployment option that you use.
+
+NOTE: For all deployment options, you must be logged in to the relevant OpenShift cluster using the `oc login` command.
