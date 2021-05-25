@@ -1,13 +1,11 @@
 [id="con-kogito-operator-deployment-options_{context}"]
 = OpenShift deployment options with the {PRODUCT} {KOGITO} Operator
 
-The {PRODUCT} {KOGITO} Operator supports the following options for building and deploying {KOGITO} microservices on {OPENSHIFT}:
+After you create your {KOGITO} microservices as part of a business application, you can use the {OPENSHIFT} web console to deploy your microservices. The {PRODUCT} {KOGITO} Operator page in the OpenShift web console guides you through the deployment process.
+
+The Red Hat Process Automation Manager {KOGITO} Operator supports the following options for building and deploying {KOGITO} microservices on {OPENSHIFT}:
 
 * Git source build and deployment
 * Binary build and deployment
 * Custom image build and deployment
 * File build and deployment
-
-{PRODUCT} provides the relevant Source-to-Image (S2I) build configuration depending on the deployment option that you use.
-
-NOTE: For all deployment options, you must be logged in to the relevant OpenShift cluster using the `oc login` command.

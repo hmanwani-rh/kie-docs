@@ -1,19 +1,20 @@
-[id="proc-kogito-microservices-deploying-on-ocp-console_{context}"]
-= Deploying {KOGITO} microservices on OpenShift using the OpenShift web console
+[id="proc-kogito-microservices-deploying-on-ocp-console-binary-build_{context}"]
+= Deploying {KOGITO} microservices on OpenShift using binary build and OpenShift web console
 
-After you create your {KOGITO} microservices as part of a business application, you can use the {OPENSHIFT} web console to deploy your microservices. The {PRODUCT} {KOGITO} Operator page in the OpenShift web console guides you through the deployment process.
+OpenShift builds can require extensive amounts of time. As a faster alternative for building and deploying your {KOGITO} microservices on OpenShift, you can use a binary build.
 
 The operator uses the following custom resources to deploy domain-specific microservices (the microservices that you develop):
 
-* `KogitoBuild` builds an application using the Git URL or other sources and produces a runtime image.
+* `KogitoBuild` processes an uploaded application and produces a runtime image.
 * `KogitoRuntime` starts the runtime image and configures it as per your requirements.
 
 .Prerequisites
-* The application with your {KOGITO} microservices is in a Git repository that is reachable from your OpenShift environment.
-* You have access to the OpenShift web console with `cluster-admin` permissions.
+* The Red Hat Process Automation Manager {KOGITO} Operator is installed.
+* The `oc` OpenShift CLI is installed and you are logged in to the relevant OpenShift cluster. For `oc` installation and login instructions, see the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/cli_tools/openshift-cli-oc[OpenShift documentation].
+* You have access to the OpenShift web console with the necessary permissions to create and edit `KogitoBuild` and `KogitoRuntime`.
 * (Quarkus only) The `pom.xml` file of your project contains the following dependency for the https://quarkus.io/guides/microprofile-health[Quarkus `smallrye-health` extension]. This extension enables the https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes[liveness and readiness probes] that are required for Quarkus-based projects on OpenShift.
 +
-.SmallRye Heath dependency for Quarkus applications on OpenShift
+.SmallRye Health dependency for Quarkus applications on OpenShift
 [source,xml]
 ----
 <dependency>
@@ -23,8 +24,8 @@ The operator uses the following custom resources to deploy domain-specific micro
 ----
 
 .Procedure
-. In the OpenShift web console, go to *Operators* -> *OperatorHub* in the left menu, search for and select *Kogito*, and follow the on-screen instructions to install the latest operator version.
-. After you install the {KOGITO} Operator, go to *Operators* -> *Installed Operators* and select *Kogito*.
+. Build an application locally.
+. Go to *Operators* -> *Installed Operators* and select *RHPAM Kogito Operator*.
 . To create the {KOGITO} build definition, on the operator page, select the *Kogito Build* tab and click *Create KogitoBuild*.
 . In the application window, use *Form View* or *YAML View* to configure the build definition.
 +
@@ -38,12 +39,8 @@ apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this service
 kind: KogitoBuild  # Application type
 metadata:
   name: example-quarkus  # Application name
-  namespace: kogito  # OpenShift project namespace
 spec:
-  type: RemoteSource
-  gitSource:
-    uri: 'https://github.com/kiegroup/kogito-examples'  # Git repository containing application (uses default branch)
-    contextDir: dmn-quarkus-example  # Git folder location of application
+  type: Binary
 ----
 
 .Example YAML definition for a Spring Boot application with {KOGITO} build
@@ -53,31 +50,27 @@ apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this service
 kind: KogitoBuild  # Application type
 metadata:
   name: example-springboot  # Application name
-  namespace: kogito  # OpenShift project namespace
 spec:
   runtime: springboot
-  type: RemoteSource
-  gitSource:
-    uri: 'https://github.com/kiegroup/kogito-examples'  # Git repository containing application (uses default branch)
-    contextDir: dmn-springboot-example  # Git folder location of application
+  type: Binary
 ----
-
-[NOTE]
-====
-If you configured an internal Maven repository, you can use it as a Maven mirror service and specify the Maven mirror URL in your {KOGITO} build definition to shorten build time substantially:
-
-[source,yaml]
-----
-spec:
-  mavenMirrorURL: http://nexus3-nexus.apps-crc.testing/repository/maven-public/
-----
-
-For more information about internal Maven repositories, see the https://maven.apache.org/guides/introduction/introduction-to-repositories.html[Apache Maven] documentation.
-====
 --
+
 . After you define your application data, click *Create* to generate the {KOGITO} build.
 +
 Your application is listed in the *{KOGITO}Builds* page. You can select the application name to view or modify application settings and YAML details.
+
+. Upload the built binary using the following command:
++
+--
+[source]
+----
+$ oc start-build example-quarkus --from-dir=target/ -n namespace
+----
+
+* `from-dir` is equals to the `target` folder path of the built application.
+* `namespace` is the namespace where `KogitoBuild` is created.
+--
 
 . To create the {KOGITO} microservice definition, on the operator page, select the *Kogito Runtime* tab and click *Create KogitoRuntime*.
 . In the application window, use *Form View* or *YAML View* to configure the microservice definition.
@@ -92,7 +85,6 @@ apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this microservice
 kind: KogitoRuntime  # Application type
 metadata:
   name: example-quarkus  # Application name
-  namespace: kogito  # OpenShift project namespace
 ----
 
 .Example YAML definition for a Spring Boot application with {KOGITO} microservices
@@ -102,16 +94,9 @@ apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this microservice
 kind: KogitoRuntime  # Application type
 metadata:
   name: example-springboot  # Application name
-  namespace: kogito  # OpenShift project namespace
 spec:
   runtime: springboot
 ----
-
-[NOTE]
-====
-In this case, the application is built from Git and deployed using KogitoRuntime. You must ensure that the application name is same in `KogitoBuild` and `KogitoRuntime`.
-====
-
 --
 
 . After you define your application data, click *Create* to generate the {KOGITO} microservice.
@@ -120,14 +105,8 @@ Your application is listed in the {KOGITO} microservice page. You can select the
 
 . In the left menu of the web console, go to *Builds* -> *Builds* to view the status of your application build.
 +
---
 You can select a specific build to view build details.
 
-[NOTE]
-====
-For every {KOGITO} service that you create for OpenShift deployment, two builds are generated and listed in the *Builds* page in the web console: a traditional runtime build and a Source-to-Image (S2I) build with the suffix `-builder`. The S2I mechanism builds the application in an OpenShift build and then passes the built application to the next OpenShift build to be packaged into the runtime container image. The {KOGITO} S2I build configuration also enables you to build the project directly from a Git repository on the OpenShift platform.
-====
---
 . After the application build is complete, go to *Workloads* -> *Deployments* to view the application deployments, pod status, and other details.
 
 . After your {KOGITO} microservice is deployed, in the left menu of the web console, go to *Networking* -> *Routes* to view the access link to the deployed application.
