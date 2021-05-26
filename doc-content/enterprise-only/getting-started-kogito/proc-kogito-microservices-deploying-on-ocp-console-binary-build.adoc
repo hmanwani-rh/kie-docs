@@ -97,6 +97,11 @@ metadata:
 spec:
   runtime: springboot
 ----
+
+[NOTE]
+====
+In this case, the application is built locally and deployed using KogitoRuntime. You must ensure that the application name is same in `KogitoBuild` and `KogitoRuntime`.
+====
 --
 
 . After you define your application data, click *Create* to generate the {KOGITO} microservice.

@@ -43,6 +43,19 @@ spec:
   runtime: springboot
   type: LocalSource
 ----
+
+[NOTE]
+====
+If you configured an internal Maven repository, you can use it as a Maven mirror service and specify the Maven mirror URL in your {KOGITO} build definition to shorten build time substantially:
+
+[source,yaml]
+----
+spec:
+  mavenMirrorURL: http://nexus3-nexus.apps-crc.testing/repository/maven-public/
+----
+
+For more information about internal Maven repositories, see the https://maven.apache.org/guides/introduction/introduction-to-repositories.html[Apache Maven] documentation.
+====
 --
 
 . After you define your application data, click *Create* to generate the {KOGITO} build.
@@ -86,6 +99,11 @@ metadata:
 spec:
   runtime: springboot
 ----
+
+[NOTE]
+====
+In this case, the application is built from a file and deployed using KogitoRuntime. You must ensure that the application name is same in `KogitoBuild` and `KogitoRuntime`.
+====
 --
 
 . After you define your application data, click *Create* to generate the {KOGITO} microservice.
