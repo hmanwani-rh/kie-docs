@@ -11,3 +11,5 @@ Decision services::
 * `dmn-quarkus-example` and `dmn-springboot-example`: A decision service (on Quarkus or Spring Boot) that uses DMN to determine driver penalty and suspension based on traffic violations.
 * `rules-quarkus-helloworld`: A Hello World decision service on Quarkus with a single DRL rule unit.
 * `ruleunit-quarkus-example` and `ruleunit-springboot-example`: A decision service (on Quarkus or Spring Boot) that uses DRL with rule units to validate a loan application and that exposes REST operations to view application status.
+* `dmn-pmml-quarkus-example` and `dmn-pmml-springboot-example`: A decision service (on Quarkus or Spring Boot) that uses PMML to determine driver penalty and suspension based on traffic violations.
+* `dmn-drools-quarkus-metrics` and `dmn-drools-springboot-metrics`: A decision service (on Quarkus or Spring Boot) that enables and consumes the runtime metrics monitoring feature in {KOGITO}.
