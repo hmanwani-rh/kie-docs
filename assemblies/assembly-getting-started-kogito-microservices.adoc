@@ -52,6 +52,7 @@ include::{enterprise-dir}/getting-started-kogito/ref-kogito-microservice-deploy-
 == Additional resources
 * {URL_DEVELOPING_DECISION_SERVICES}#assembly-dmn-models[_{DMN_MODELS}_]
 * {URL_DEVELOPING_DECISION_SERVICES}#assembly-drl-rules[_{DRL_RULES}_]
+* {URL_DEVELOPING_DECISION_SERVICES}#assembly-pmml-models[_{PMML_MODELS}_]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
