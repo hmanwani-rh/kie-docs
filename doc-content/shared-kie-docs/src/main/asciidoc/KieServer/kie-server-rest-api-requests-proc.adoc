@@ -85,7 +85,7 @@ For REST client:
 ** `Accept`: `application/json`
 ** `Content-Type`: `application/json`
 +
-NOTE: When you add `field=not_null` in the `Content_Type`, then the null fields are excluded from the REST API response.
+NOTE: When you add `fields=not_null` to `Content-Type`, the null fields are excluded from the REST API response.
 
 * *HTTP method*: Set to `PUT`.
 * *URL*: Enter the {KIE_SERVER} REST API base URL and endpoint, such as `\http://localhost:8080/kie-server/services/rest/server/containers/MyContainer`.
@@ -135,7 +135,7 @@ For curl utility:
 ** `Accept`: `application/json`
 ** `Content-Type`: `application/json`
 +
-NOTE: When you add `field=not_null` in the `Content_Type`, then the null fields are excluded from the REST API response.
+NOTE: When you add `fields=not_null` to `Content-Type`, the null fields are excluded from the REST API response.
 
 * `-X`: Set to `PUT`.
 * *URL*: Enter the {KIE_SERVER} REST API base URL and endpoint, such as `\http://localhost:8080/kie-server/services/rest/server/containers/MyContainer`.
