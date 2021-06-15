@@ -3,6 +3,8 @@
 
 Directly interacting with the REST endpoints of {KIE_SERVER} provides the most separation between the calling code and the decision logic definition. The calling code is completely free of direct dependencies, and you can implement it in an entirely different development platform such as `Node.js` or `.NET`. The examples in this section demonstrate Nix-style curl commands but provide relevant information to adapt to any REST client.
 
+When you use a REST endpoint of KIE Server, the best practice is to define a domain object POJO Java class, annotated with standard KIE Server marshalling annotations.
+
 For more information about the {KIE_SERVER} REST API, see
 ifdef::DM,PAM[]
 {URL_DEPLOYING_AND_MANAGING_SERVICES}#assembly-kie-apis[_{KIE_APIS}_].
