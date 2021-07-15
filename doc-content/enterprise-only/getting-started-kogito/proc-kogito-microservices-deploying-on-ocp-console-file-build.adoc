@@ -21,7 +21,7 @@ The operator uses the following custom resources to deploy domain-specific micro
 --
 At a minimum, define the application configurations shown in the following example YAML file:
 
-.Example YAML definition for a Quarkus application with {KOGITO} build
+.Example YAML definition for a {QUARKUS} application with {KOGITO} build
 [source,yaml,subs="attributes+"]
 ----
 apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this service
@@ -80,7 +80,7 @@ $ oc start-build example-quarkus-builder --from-file=<file-asset-path> -n namesp
 --
 At a minimum, define the application configurations shown in the following example YAML file:
 
-.Example YAML definition for a Quarkus application with {KOGITO} microservices
+.Example YAML definition for a {QUARKUS} application with {KOGITO} microservices
 [source,yaml,subs="attributes+"]
 ----
 apiVersion: rhpam.kiegroup.org/v1 # {KOGITO} API for this microservice
