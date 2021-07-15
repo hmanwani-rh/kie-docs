@@ -222,6 +222,9 @@ endif::OP[]
 :BUILDING_WIDGETS: Creating custom pages in {CENTRAL}
 :CONFIGURING_CENTRAL: Configuring {CENTRAL} settings and properties
 
+:GETTING_STARTED_KOGITO_MICROSERVICE: Getting started with {KOGITO} microservices
+:DEPLOYING_KOGITO_MICROSERVICE_OPENSHIFT: Deploying {KOGITO} microservices on {OPENSHIFT}
+
 // For reference in future migrations
 ////
 :MIGRATING_BRMS_TO_DM: Migrating from Red Hat BRMS 6.4 to {PRODUCT} {PRODUCT_VERSION}
