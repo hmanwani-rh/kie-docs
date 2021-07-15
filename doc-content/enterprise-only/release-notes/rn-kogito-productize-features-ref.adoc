@@ -11,10 +11,16 @@
 
 For more information about Quarkus, see https://www.redhat.com/en/topics/cloud-native-apps/why-choose-red-hat-quarkus[Why choose the Red Hat build of Quarkus?].
 
+For more information about getting started with {KOGITO} in {PRODUCT}, see {URL_GETTING_STARTED_KOGITO_MICROSERVICES}#assembly-getting-started-kogito-microservices[_{GETTING_STARTED_KOGITO_MICROSERVICES}_].
+
 == Support for {KOGITO} JVM Quarkus runtime
 
 {PRODUCT} now supports {KOGITO} JVM Quarkus runtime images.
 
+For more information, see {URL_GETTING_STARTED_KOGITO_MICROSERVICES}#assembly-deploying-kogito-microservices-on-openshift[_{GETTING_STARTED_KOGITO_MICROSERVICES}_].
+
 == Support for {KOGITO} builder images for Quarkus and Spring Boot
 
 {PRODUCT} now includes {KOGITO} builder images for Quarkus and Spring Boot.
+
+For more information, see {URL_GETTING_STARTED_KOGITO_MICROSERVICES}#assembly-deploying-kogito-microservices-on-openshift[_{GETTING_STARTED_KOGITO_MICROSERVICES}_].

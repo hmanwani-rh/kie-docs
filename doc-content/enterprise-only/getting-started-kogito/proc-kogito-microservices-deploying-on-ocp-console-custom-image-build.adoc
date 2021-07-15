@@ -8,7 +8,7 @@ The operator uses the following custom resources to deploy domain-specific micro
 * `KogitoRuntime` starts the runtime image and configures it as per your requirements.
 
 .Prerequisites
-* The Red Hat Process Automation Manager {KOGITO} Operator is installed.
+* The RHPAM Kogito Operator is installed.
 * You have access to the OpenShift web console with the necessary permissions to create and edit `KogitoRuntime`.
 * (Quarkus only) The `pom.xml` file of your project contains the following dependency for the https://quarkus.io/guides/microprofile-health[Quarkus `smallrye-health` extension]. This extension enables the https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes[liveness and readiness probes] that are required for Quarkus-based projects on OpenShift.
 +
